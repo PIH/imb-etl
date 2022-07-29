@@ -498,7 +498,7 @@
       <type>JOB</type>
       <specification_method>filename</specification_method>
       <job_object_id/>
-      <filename>${PIH_PENTAHO_HOME}\jobs\load-configuration.kjb</filename>
+      <filename>${PIH_PENTAHO_HOME}/jobs/load-configuration.kjb</filename>
       <jobname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -784,7 +784,7 @@
       <type>TRANS</type>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>${PIH_PENTAHO_HOME}\rwanda\transforms\patient_service.ktr</filename>
+      <filename>${PIH_PENTAHO_HOME}/rwanda/transforms/patient_service.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -820,7 +820,7 @@
       <type>TRANS</type>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>${PIH_PENTAHO_HOME}\rwanda\transforms\payment.ktr</filename>
+      <filename>${PIH_PENTAHO_HOME}/rwanda/transforms/payment.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -856,7 +856,7 @@
       <type>TRANS</type>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>${PIH_PENTAHO_HOME}\rwanda\transforms\rw_refund.ktr</filename>
+      <filename>${PIH_PENTAHO_HOME}/rwanda/transforms/rw_refund.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -892,7 +892,7 @@
       <type>TRANS</type>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>${PIH_PENTAHO_HOME}\rwanda\transforms\rw_insurance.ktr</filename>
+      <filename>${PIH_PENTAHO_HOME}/rwanda/transforms/rw_insurance.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -928,7 +928,7 @@
       <type>TRANS</type>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>${PIH_PENTAHO_HOME}\rwanda\transforms\rw_bill.ktr</filename>
+      <filename>${PIH_PENTAHO_HOME}/rwanda/transforms/rw_bill.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>

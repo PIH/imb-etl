@@ -16,7 +16,7 @@ parameters:
 
 configuration:
   job:
-    filePath: "pentaho/rwanda/jobs/load-rwanda-data.kjb"
+    filePath: "pentaho/rwanda/jobs/load-rwanda-data-omrs2.kjb"
     logLevel: "BASIC"
   pih:
     pentahoHome: "${pih.pentahoHome}"
