@@ -65,7 +65,7 @@
       <type>TRANS</type>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>C&#x3a;&#x5c;Users&#x5c;PIH&#x5c;Documents&#x5c;GitHub&#x5c;pih-pentaho&#x5c;rwanda&#x5c;hiv-unification&#x5c;transforms&#x5c;import-into-omrs-patient.ktr</filename>
+      <filename>${PIH_PENTAHO_HOME}/rwanda/hiv-unification/transforms/import-into-omrs-patient.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -147,7 +147,7 @@
       <type>TRANS</type>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>C&#x3a;&#x5c;Users&#x5c;PIH&#x5c;Documents&#x5c;GitHub&#x5c;pih-pentaho&#x5c;rwanda&#x5c;hiv-unification&#x5c;transforms&#x5c;import-into-omrs-patient-identifier-1-9.ktr</filename>
+      <filename>${PIH_PENTAHO_HOME}/rwanda/hiv-unification/transforms/import-into-omrs-patient-identifier-1-9.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -183,7 +183,7 @@
       <type>TRANS</type>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>C&#x3a;&#x5c;Users&#x5c;PIH&#x5c;Documents&#x5c;GitHub&#x5c;pih-pentaho&#x5c;rwanda&#x5c;hiv-unification&#x5c;transforms&#x5c;import-into-omrs-program-enrollment-1-9.ktr</filename>
+      <filename>${PIH_PENTAHO_HOME}/rwanda/hiv-unification/transforms/import-into-omrs-program-enrollment-1-9.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -219,7 +219,7 @@
       <type>TRANS</type>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>C&#x3a;&#x5c;Users&#x5c;PIH&#x5c;Documents&#x5c;GitHub&#x5c;pih-pentaho&#x5c;rwanda&#x5c;hiv-unification&#x5c;transforms&#x5c;import-into-omrs-encounter.ktr</filename>
+      <filename>${PIH_PENTAHO_HOME}/rwanda/hiv-unification/transforms/import-into-omrs-encounter.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -255,7 +255,7 @@
       <type>TRANS</type>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>C&#x3a;&#x5c;Users&#x5c;PIH&#x5c;Documents&#x5c;GitHub&#x5c;pih-pentaho&#x5c;rwanda&#x5c;hiv-unification&#x5c;transforms&#x5c;import-into-omrs-program-state-1-9.ktr</filename>
+      <filename>${PIH_PENTAHO_HOME}/rwanda/hiv-unification/transforms/import-into-omrs-program-state-1-9.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -291,7 +291,7 @@
       <type>TRANS</type>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>C&#x3a;&#x5c;Users&#x5c;PIH&#x5c;Documents&#x5c;GitHub&#x5c;pih-pentaho&#x5c;rwanda&#x5c;hiv-unification&#x5c;transforms&#x5c;import-into-omrs-obs.ktr</filename>
+      <filename>${PIH_PENTAHO_HOME}/rwanda/hiv-unification/transforms/import-into-omrs-obs.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -327,7 +327,7 @@
       <type>TRANS</type>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>C&#x3a;&#x5c;Users&#x5c;PIH&#x5c;Documents&#x5c;GitHub&#x5c;pih-pentaho&#x5c;rwanda&#x5c;hiv-unification&#x5c;transforms&#x5c;import-into-omrs-relationship-1-9.ktr</filename>
+      <filename>${PIH_PENTAHO_HOME}/rwanda/hiv-unification/transforms/import-into-omrs-relationship-1-9.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>

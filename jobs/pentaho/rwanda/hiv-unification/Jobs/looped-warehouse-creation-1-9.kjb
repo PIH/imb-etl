@@ -45,7 +45,7 @@
       <type>JOB</type>
       <specification_method>filename</specification_method>
       <job_object_id/>
-      <filename>C&#x3a;&#x5c;Users&#x5c;PIH&#x5c;Documents&#x5c;GitHub&#x5c;pih-pentaho&#x5c;rwanda&#x5c;hiv-unification&#x5c;Jobs&#x5c;hiv-unification-load-rwanda-data.kjb</filename>
+      <filename>${PIH_PENTAHO_HOME}/rwanda/hiv-unification/jobs/hiv-unification-load-rwanda-data.kjb</filename>
       <jobname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -79,7 +79,7 @@
       <type>JOB</type>
       <specification_method>filename</specification_method>
       <job_object_id/>
-      <filename>C&#x3a;&#x5c;Users&#x5c;PIH&#x5c;Documents&#x5c;GitHub&#x5c;pih-pentaho&#x5c;rwanda&#x5c;hiv-unification&#x5c;Jobs&#x5c;load-from-openmrs-1-9.kjb</filename>
+      <filename>${PIH_PENTAHO_HOME}/rwanda/hiv-unification/jobs/load-from-openmrs-1-9.kjb</filename>
       <jobname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -113,7 +113,7 @@
       <type>TRANS</type>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>C&#x3a;&#x5c;Users&#x5c;PIH&#x5c;Documents&#x5c;GitHub&#x5c;pih-pentaho&#x5c;rwanda&#x5c;hiv-unification&#x5c;transforms&#x5c;db-exists.ktr</filename>
+      <filename>${PIH_PENTAHO_HOME}/rwanda/hiv-unification/transforms/db-exists.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
