@@ -296,10 +296,12 @@
       <name>Load Configuration</name>
       <description/>
       <type>JOB</type>
+      <attributes/>
       <specification_method>filename</specification_method>
       <job_object_id/>
       <filename>${PIH_PENTAHO_HOME}/openmrs/load-configuration.kjb</filename>
       <jobname/>
+      <directory/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
       <exec_per_row>N</exec_per_row>
@@ -325,15 +327,18 @@
       <nr>0</nr>
       <xloc>288</xloc>
       <yloc>176</yloc>
+      <attributes_kjc/>
     </entry>
     <entry>
-      <name>Load Rwanda </name>
+      <name>Load Rwanda</name>
       <description/>
       <type>JOB</type>
+      <attributes/>
       <specification_method>filename</specification_method>
       <job_object_id/>
-      <filename>${PIH_PENTAHO_HOME}/rwanda/jobs/load-rwanda-data-omrs2.kjb</filename>
+      <filename>${PIH_PENTAHO_HOME}/rwanda/jobs/load-rwanda-data.kjb</filename>
       <jobname/>
+      <directory/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
       <exec_per_row>N</exec_per_row>
@@ -359,15 +364,18 @@
       <nr>0</nr>
       <xloc>656</xloc>
       <yloc>176</yloc>
+      <attributes_kjc/>
     </entry>
     <entry>
-      <name>Load From OpenMRS </name>
+      <name>Load From OpenMRS</name>
       <description/>
       <type>JOB</type>
+      <attributes/>
       <specification_method>filename</specification_method>
       <job_object_id/>
-      <filename>${PIH_PENTAHO_HOME}/jobs/load-from-openmrs.kjb</filename>
+      <filename>${PIH_PENTAHO_HOME}/openmrs/load-from-openmrs.kjb</filename>
       <jobname/>
+      <directory/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
       <exec_per_row>N</exec_per_row>
@@ -393,11 +401,13 @@
       <nr>0</nr>
       <xloc>480</xloc>
       <yloc>176</yloc>
+      <attributes_kjc/>
     </entry>
     <entry>
       <name>START</name>
       <description/>
       <type>SPECIAL</type>
+      <attributes/>
       <start>Y</start>
       <dummy>N</dummy>
       <repeat>N</repeat>
@@ -413,18 +423,10 @@
       <nr>0</nr>
       <xloc>112</xloc>
       <yloc>176</yloc>
+      <attributes_kjc/>
     </entry>
   </entries>
   <hops>
-    <hop>
-      <from>Load From OpenMRS </from>
-      <to>Load Rwanda </to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
     <hop>
       <from>START</from>
       <to>Load Configuration</to>
@@ -436,7 +438,16 @@
     </hop>
     <hop>
       <from>Load Configuration</from>
-      <to>Load From OpenMRS </to>
+      <to>Load From OpenMRS</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Load From OpenMRS</from>
+      <to>Load Rwanda</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>

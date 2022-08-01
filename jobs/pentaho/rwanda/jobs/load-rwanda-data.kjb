@@ -310,7 +310,7 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>160</xloc>
+      <xloc>48</xloc>
       <yloc>160</yloc>
       <attributes_kjc/>
     </entry>
@@ -349,8 +349,8 @@
       <parallel>Y</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>672</xloc>
-      <yloc>368</yloc>
+      <xloc>592</xloc>
+      <yloc>416</yloc>
       <attributes_kjc/>
     </entry>
     <entry>
@@ -893,8 +893,8 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>48</xloc>
-      <yloc>528</yloc>
+      <xloc>16</xloc>
+      <yloc>592</yloc>
       <attributes_kjc/>
     </entry>
     <entry>
@@ -932,8 +932,8 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>176</xloc>
-      <yloc>528</yloc>
+      <xloc>160</xloc>
+      <yloc>592</yloc>
       <attributes_kjc/>
     </entry>
     <entry>
@@ -1011,7 +1011,7 @@
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>304</xloc>
-      <yloc>528</yloc>
+      <yloc>592</yloc>
       <attributes_kjc/>
     </entry>
   </entries>
@@ -1172,6 +1172,15 @@
     <hop>
       <from>Load Configuration</from>
       <to>Bill</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Load Configuration</from>
+      <to>Load onc Diagnosis</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
