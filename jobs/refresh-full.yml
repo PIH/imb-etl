@@ -2,14 +2,14 @@
 # If we have the server resources, and want to reduce loading time, we could adapt this to use a nested iterating-job
 # that would execute the upper-neno and lower-neno refreshes concurrently.
 type: "job-pipeline"
-description: "Refresh combined DW in SQL Server"
+description: "Recreate entire warehouse with data from Rwinkwavu, Butaro, and Kirehe"
 configuration:
   jobs:
     - path: "create-omrs-schema.yml"
     - path: "create-rw-schema.yml"
     - path: "refresh-rwinkwavu.yml"
-    - path: "refresh-butaro.yml"
-    - path: "refresh-kirehe.yml"
+    # - path: "refresh-butaro.yml"
+    # - path: "refresh-kirehe.yml"
     #- path: "anonymize-rwanda.yml"
 
 # If you never want this to execute on a schedule, but rather plan to execute it only from startup.jobs, you can remove this schedule property

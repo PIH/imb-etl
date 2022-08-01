@@ -1,5 +1,5 @@
 type: "pentaho-job"
-description: "Recreate the OMRS schema"
+description: "Refresh data from Kirehe"
 
 parameters:
   pih.pentahoHome: "${petl.jobDir}/pentaho"
@@ -16,8 +16,11 @@ parameters:
 
 configuration:
   job:
-    filePath: "pentaho/rwanda/jobs/load-rwanda-data.kjb"
+    filePath: "pentaho/rwanda/jobs/refresh-warehouse.kjb"
     logLevel: "BASIC"
+    plugins:
+      - "org.pentaho.di.trans.steps.addsequence.AddSequenceMeta"
+      - "org.pentaho.di.trans.steps.concatfields.ConcatFieldsMeta"
   pih:
     pentahoHome: "${pih.pentahoHome}"
     country: "rwanda"

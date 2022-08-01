@@ -1,5 +1,5 @@
 type: "pentaho-job"
-description: "Recreate the OMRS schema"
+description: "Refresh data from Butaro"
 
 parameters:
   pih.pentahoHome: "${petl.jobDir}/pentaho"
