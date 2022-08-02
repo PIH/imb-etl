@@ -4,7 +4,6 @@ IMB-ETL - ETL Jobs to support reporting and analytics from OpenMRS at IMB
 This project is based off of the original [PIH Pentaho](https://github.com/PIH/pih-pentaho) project, and adapted 
 to enable growth beyond Pentaho and to allow for execution through the [PETL](https://github.com/PIH/petl) ETL tool.
 
-
 # Installation
 
 For implementers, see [Puppet](https://github.com/PIH/mirebalais-puppet/tree/master/mirebalais-modules/petl)
@@ -20,17 +19,17 @@ precaution to ensure no production data is inadvertently affected by the ETL pro
 ### Target MySQL databases
 * You must have access to a target MySQL instance into which to ETL from the source databases
 * You must create new databases inside this MySQL instance all source databases to use
+* One database is the target into which each source server ETLs into
+* Another database is the target into which the anonymization ETL writes data
 
 Example:
 
 ```bash
-mysql> create database openmrs_reporting default charset utf8;
+mysql> create database reporting default charset utf8;
+Query OK, 1 row affected (0.00 sec)
+mysql> create database anonymized default charset utf8;
 Query OK, 1 row affected (0.00 sec)
 ```
-
-### Target SQL Server databases
-* You must have access to a SQL Server target instance into which to ETL from MySQL
-* You can use the Docker instance [described here](https://github.com/PIH/petl/tree/master/docs/examples/sqlserver-docker).
 
 ### Install PETL application and jobs
 
@@ -39,17 +38,17 @@ Query OK, 1 row affected (0.00 sec)
    1. For developers, create a symbolic link to the datasources and jobs folders of this project
    2. For implementers, download the zip artifact from maven and extract it into this directory
 3. Install an application.yml file into this directory
-   1. For developers, copy or create a symolic link to example-application.yml, and modify settings to match your database configuration
-   2. For implementers, install the application.yml file, and ensure all of the database settings are setup correctly
+   1. For developers, copy [example-application.yml](./example-application.yml), and modify to match your database configuration
+   2. For implementers, install the application.yml file, and ensure all the database settings are correct
    3. For more details on configuration options for application.yml, see the [PETL](https://github.com/PIH/petl) project
 4. Install the PETL executable jar file
    1. For developers, you can clone and build the PETL application locally and create a symbolic link to target/petl-*.jar
-   2. For developers or implementers, you can download the latest PETL jar from Bamboo
-
+   2. For developers or implementers, you can download the latest PETL jar from Maven
+   3. The minimum required PETL version is 3.4.0-SNAPSHOT
 
 # Configuration Notes
 
-The application.yml file provided sets the refresh-full.yml job up in the "startup.jobs" property.  This is mainly there
+The application.yml file sets the refresh-full.yml job up in the "startup.jobs" property.  This is mainly there
 to facilitate development and testing, as this is where one simply wants to fire up the application and execute their job.
 However, on a typical test or production server, you may want to remove this from the startup.jobs, as keeping it here will
 mean that anytime the server or application is restarted, the jobs will run and will drop and recreate the warehouse tables.

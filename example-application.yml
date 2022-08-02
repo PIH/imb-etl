@@ -17,21 +17,35 @@ logging:
 
 rwinkwavuOpenmrs:
   host: "localhost"
-  port: "3307"
-  databaseName: "openmrs"
+  port: "3306"
+  databaseName: "rwinkwavu"
   user: "root"
   password: "password"
 
 butaroOpenmrs:
   host: "localhost"
-  port: "3308"
+  port: "3306"
   databaseName: "butaro"
+  user: "root"
+  password: "root"
+
+kireheOpenmrs:
+  host: "localhost"
+  port: "3306"
+  databaseName: "kirehe"
   user: "root"
   password: "root"
 
 reporting:
   host: "localhost"
-  port: "3308"
-  databaseName: "openmrs_reporting"
+  port: "3306"
+  databaseName: "reporting"
+  user: "root"
+  password: "root"
+
+anonymized:
+  host: "localhost"
+  port: "3306"
+  databaseName: "anonymized"
   user: "root"
   password: "root"
