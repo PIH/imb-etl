@@ -1,22 +1,22 @@
 type: "pentaho-job"
-description: "Refresh data from Butaro"
+description: "Anonymize data from all sites"
 
 parameters:
   pih.pentahoHome: "${petl.jobDir}/pentaho"
-  openmrs.db.host: "${butaroOpenmrs.host}"
-  openmrs.db.port: "${butaroOpenmrs.port}"
-  openmrs.db.name: "${butaroOpenmrs.databaseName}"
-  openmrs.db.user: "${butaroOpenmrs.user}"
-  openmrs.db.password: "${butaroOpenmrs.password}"
   warehouse.db.host: "${reporting.host}"
   warehouse.db.port: "${reporting.port}"
   warehouse.db.name: "${reporting.databaseName}"
   warehouse.db.user: "${reporting.user}"
   warehouse.db.password: "${reporting.password}"
+  anonymized.db.host: "${anonymized.host}"
+  anonymized.db.port: "${anonymized.port}"
+  anonymized.db.name: "${anonymized.databaseName}"
+  anonymized.db.user: "${anonymized.user}"
+  anonymized.db.password: "${anonymized.password}"
 
 configuration:
   job:
-    filePath: "pentaho/rwanda/jobs/refresh-warehouse.kjb"
+    filePath: "pentaho/rwanda/anonymize/anonymize-rwanda.kjb"
     logLevel: "BASIC"
     plugins:
       - "org.pentaho.di.trans.steps.addsequence.AddSequenceMeta"
@@ -24,13 +24,6 @@ configuration:
   pih:
     pentahoHome: "${pih.pentahoHome}"
     country: "rwanda"
-  openmrs:
-    db:
-      host: "${openmrs.db.host}"
-      port: "${openmrs.db.port}"
-      name: "${openmrs.db.name}"
-      user: "${openmrs.db.user}"
-      password: "${openmrs.db.password}"
   warehouse:
     db:
       host: "${warehouse.db.host}"
@@ -38,4 +31,10 @@ configuration:
       name: "${warehouse.db.name}"
       user: "${warehouse.db.user}"
       password: "${warehouse.db.password}"
-      key_prefix: "20"
+  anonymized:
+    db:
+      host: "${anonymized.db.host}"
+      port: "${anonymized.db.port}"
+      name: "${anonymized.db.name}"
+      user: "${anonymized.db.user}"
+      password: "${anonymized.db.password}"

@@ -38,4 +38,4 @@ configuration:
       name: "${warehouse.db.name}"
       user: "${warehouse.db.user}"
       password: "${warehouse.db.password}"
-      key_prefix: "10"
+      key_prefix: "30"
