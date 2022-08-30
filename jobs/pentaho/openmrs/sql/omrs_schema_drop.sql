@@ -11,3 +11,4 @@ drop table if exists omrs_obs_group;
 drop table if exists omrs_obs;
 drop table if exists omrs_program_enrollment;
 drop table if exists omrs_program_state;
+drop table if exists pdc_z_score_input;

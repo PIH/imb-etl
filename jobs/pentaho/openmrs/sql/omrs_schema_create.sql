@@ -162,3 +162,19 @@ CREATE TABLE omrs_program_state (
   age_months_at_end int,
   location VARCHAR(255)
 );
+
+CREATE TABLE pdc_z_score_input (
+  R_id int DEFAULT NULL,
+  patient_id int DEFAULT NULL,
+  obs_date text,
+  oedema int DEFAULT NULL,
+  lh text,
+  weight double DEFAULT NULL,
+  clenhei int DEFAULT NULL,
+  sex int DEFAULT NULL,
+  gestatiol_age_at_birth_in_weeks text,
+  agedays int DEFAULT NULL,
+  zwfl text,
+  zwei text,
+  zlen text
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
