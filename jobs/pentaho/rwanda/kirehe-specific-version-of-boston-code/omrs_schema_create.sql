@@ -63,8 +63,8 @@ CREATE TABLE omrs_relationship (
   patient_uuid CHAR(38) not null
 );
 
-CREATE TABLE omrs_encounter_provider (
   encounter_provider_id INT not null,
+CREATE TABLE omrs_encounter_provider (
   uuid CHAR(38) not null,
   encounter_id INT not null,
   encounter_uuid CHAR(38) not null,
@@ -140,7 +140,7 @@ CREATE TABLE omrs_obs (
   comments VARCHAR(255),
   obs_group_id INT,
   date_created DATE,
-  patient_uuid CHAR(38) not null
+  patient_id CHAR(38) not null
   
 );
 
@@ -179,19 +179,3 @@ CREATE TABLE omrs_program_state (
   date_updated DATE,
   patient_uuid CHAR(38) not null
 );
-
-CREATE TABLE pdc_z_score_input (
-  R_id int DEFAULT NULL,
-  patient_id int DEFAULT NULL,
-  obs_date text,
-  oedema int DEFAULT NULL,
-  lh text,
-  weight double DEFAULT NULL,
-  clenhei int DEFAULT NULL,
-  sex int DEFAULT NULL,
-  gestatiol_age_at_birth_in_weeks text,
-  agedays int DEFAULT NULL,
-  zwfl text,
-  zwei text,
-  zlen text
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

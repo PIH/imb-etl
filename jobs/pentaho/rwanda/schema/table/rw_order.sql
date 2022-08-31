@@ -33,7 +33,9 @@ CREATE TABLE rw_order (
   order_set VARCHAR(255),
   age_years_at_start_date Int,
   age_months_at_start_date Int,
-  drug VARCHAR(255)
+  drug VARCHAR(255),
+  patient_uuid CHAR(38),
+  order_group_uuid CHAR(38)
   
 );
 

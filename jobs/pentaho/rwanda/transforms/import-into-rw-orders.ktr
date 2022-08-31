@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>import-into-rw-orders</name>
+    <name>import-into-rw-orders-omrs2</name>
     <description/>
     <extended_description/>
     <trans_version/>
@@ -725,7 +725,9 @@ select		o.order_id,
 #			drug_order.complex, #was included but never changed
 			drug_order.quantity,
 #			drug_order.equivalent_daily_dose, #was included but not used
-			drug.name as drug_name
+			drug.name as drug_name,
+			person.uuid as patient_uuid,
+			order_group.uuid as order_group_uuid
 			
 	
 from 		orders o
@@ -1176,6 +1178,14 @@ var prefixed_group_id = order_group_id == null ? null : id_prefix + order_group_
       <field>
         <column_name>drug</column_name>
         <stream_name>drug_name</stream_name>
+      </field>
+      <field>
+        <column_name>patient_uuid</column_name>
+        <stream_name>patient_uuid</stream_name>
+      </field>
+      <field>
+        <column_name>order_group_uuid</column_name>
+        <stream_name>order_group_uuid</stream_name>
       </field>
     </fields>
     <cluster_schema/>
