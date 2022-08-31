@@ -724,11 +724,18 @@
 		from moh_bill_beneficiary where moh_bill_beneficiary.beneficiary_id in 
 			(SELECT moh_bill_consommation.beneficiary_id from moh_bill_consommation where moh_bill_consommation.patient_bill_id=payment.patient_bill_id) 
 	) as patient_id,
-	payment.patient_bill_id
+	payment.patient_bill_id,
+    person.uuid as patient_uuid
     
 from moh_bill_payment payment
 LEFT JOIN users u on u.user_id=payment.collector
 LEFT JOIN   person up on up.person_id=u.person_id
+LEFT JOIN (Select max(patient_id) patient_id, max(patient_bill_id) patient_bill_id
+		from moh_bill_beneficiary 
+		LEFT JOIN moh_bill_consommation on moh_bill_consommation.beneficiary_id=moh_bill_beneficiary.beneficiary_id
+		group by patient_id
+	) patient on patient.patient_bill_id=payment.patient_bill_id
+LEFT JOIN person on person.person_id=patient.patient_id
 
 where payment.voided=0</sql>
     <limit>0</limit>
@@ -954,6 +961,10 @@ where payment.voided=0</sql>
       <field>
         <column_name>patient_bill_id</column_name>
         <stream_name>patient_bill_id</stream_name>
+      </field>
+      <field>
+        <column_name>patient_uuid</column_name>
+        <stream_name>patient_uuid</stream_name>
       </field>
     </fields>
     <cluster_schema/>

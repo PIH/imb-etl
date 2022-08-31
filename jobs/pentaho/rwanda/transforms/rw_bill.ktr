@@ -910,6 +910,10 @@
         <column_name>patient_bill_id</column_name>
         <stream_name>patient_bill_id</stream_name>
       </field>
+      <field>
+        <column_name>patient_uuid</column_name>
+        <stream_name>patient_uuid</stream_name>
+      </field>
     </fields>
     <cluster_schema/>
     <remotesteps>
@@ -945,7 +949,8 @@
     is_paid,
     consommation.created_date,
     up.uuid as creator_uuid,
-	patient_bill.patient_bill_id
+	patient_bill.patient_bill_id,
+	person_patient.uuid as patient_uuid
     
 FROM moh_bill_patient_bill patient_bill
 LEFT JOIN moh_bill_consommation consommation on consommation.patient_bill_id=patient_bill.patient_bill_id
@@ -954,6 +959,7 @@ LEFT JOIN moh_bill_third_party_bill third_party_bill on third_party_bill.third_p
 LEFT JOIN moh_bill_insurance_bill insurance_bill on insurance_bill.insurance_bill_id=consommation.insurance_bill_id
 LEFT JOIN users u on u.user_id=consommation.creator
 LEFT JOIN   person up on up.person_id=u.person_id
+LEFT JOIN person person_patient on person_patient.person_id=beneficiary.patient_id
 where patient_bill.voided=0
 and consommation.created_date is not null
 ;

@@ -721,6 +721,7 @@
     moh_bill_insurance_policy.retire_reason,
     moh_bill_third_party.rate as third_part_rate,
     moh_bill_insurance.name as insurance_company
+	patient_id_uuid as patient_uuid
 from moh_bill_insurance_policy
 LEFT JOIN moh_bill_insurance on moh_bill_insurance.insurance_id=moh_bill_insurance_policy.insurance_id
 LEFT JOIN moh_bill_beneficiary on moh_bill_beneficiary.insurance_policy_id=moh_bill_insurance_policy.insurance_policy_id
@@ -952,6 +953,10 @@ LEFT JOIN moh_bill_third_party on moh_bill_third_party.third_party_id=moh_bill_i
       <field>
         <column_name>owner</column_name>
         <stream_name>owner</stream_name>
+      </field>
+      <field>
+        <column_name>patient_uuid</column_name>
+        <stream_name>patient_uuid</stream_name>
       </field>
     </fields>
     <cluster_schema/>

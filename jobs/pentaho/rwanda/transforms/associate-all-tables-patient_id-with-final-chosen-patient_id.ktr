@@ -537,7 +537,21 @@ set omrs_relationship.patient_id = (SELECT patient_id from omrs_patient where om
 ;
 
 update rw_order
-set rw_order.patient_id= (SELECT patient_id from omrs_patient where omrs_patient.uuid=rw_patient.patient_uuid)
+set rw_order.patient_id= (SELECT patient_id from omrs_patient where omrs_patient.uuid=rw_order.patient_uuid)
+;
+
+update rw_bill
+set rw_bill.patient_id= (SELECT patient_id from omrs_patient where omrs_patient.uuid=rw_bill.patient_uuid)
+;
+update rw_payment
+set rw_payment.patient_id= (SELECT patient_id from omrs_patient where omrs_patient.uuid=rw_payment.patient_uuid)
+;
+
+update rw_insurance_policy
+set rw_insurance_policy.patient_id= (SELECT patient_id from omrs_patient where omrs_patient.uuid=rw_insurance_policy.patient_uuid)
+;
+update rw_patient_services
+set rw_patient_services.patient_id= (SELECT patient_id from omrs_patient where omrs_patient.uuid=rw_patient_services.patient_uuid)
 ;</sql>
     <set_params>N</set_params>
     <insert_field/>

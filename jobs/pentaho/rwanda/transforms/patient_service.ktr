@@ -622,13 +622,15 @@ SELECT
     is_paid,
     facility_service_price.name,
 	patient_bill_id,
-	service_category.name as category_name
+	service_category.name as category_name,
+	person.uuid as patient_uuid
 FROM moh_bill_patient_service_bill patient_service_bill
 LEFT JOIN moh_bill_consommation consommation on consommation.consommation_id=patient_service_bill.consommation_id
 LEFT JOIN moh_bill_beneficiary beneficiary on beneficiary.beneficiary_id=consommation.beneficiary_id
 LEFT JOIN moh_bill_billable_service billable_service on billable_service.billable_service_id=patient_service_bill.billable_service_id
 LEFT JOIN moh_bill_facility_service_price facility_service_price on facility_service_price.facility_service_price_id=billable_service.facility_service_price_id
 LEFT JOIN moh_bill_service_category service_category on service_category.service_category_id=billable_service.service_category_id
+LEFT JOIN person on person.person_id=patient_service_bill.patient_id
 where patient_service_bill.voided=0
 ;
 </sql>
@@ -645,8 +647,8 @@ where patient_service_bill.voided=0
       </output>
     </remotesteps>
     <GUI>
-      <xloc>165</xloc>
-      <yloc>189</yloc>
+      <xloc>112</xloc>
+      <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -761,6 +763,10 @@ where patient_service_bill.voided=0
       <field>
         <column_name>category_name</column_name>
         <stream_name>category_name</stream_name>
+      </field>
+      <field>
+        <column_name>patient_uuid</column_name>
+        <stream_name>patient_uuid</stream_name>
       </field>
     </fields>
     <cluster_schema/>

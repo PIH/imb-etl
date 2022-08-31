@@ -121,3 +121,40 @@ Link your shared.xml to the shared file used by the project:
 * Create a new shared.xml that is a symbolic link to "jobs/pentaho/shared-connections.xml" in this project.
 
 * Test it out by trying to run a job in the pih-pentaho/jobs folder (eg. load-from-openmrs.kjb)
+
+=====================
+
+Warehouse Meaning
+
+Following the model of the PIH data warehouse, the IMB data warehouse combines data from each of the Rwandan districts IMB serves with a separate sync network. That data is combined in the data warehouse and flattened.
+
+In addition to the PIH-wide tables, IMB has
+* rw_order from the openmrs.orders table. Notably, new and discontinue order rows are combined into a single rw_order row similar to the OpenMRS model before 1.10.
+* rw_order_group gives information about a set of orders given to a specific patient, notably including the beginning and end
+* rw_last_obs_in_period holds pre-calculated results of the most-recent obs at a given point in time for a given patient. rw_concepts_selected and rw_selected_periods from /jobs/pentaho/rwanda/resources hold the selection of concepts and time points for those obs.
+* rw_last_vl_include_blanks gives the last viral load for patients pre-calculated
+* rw_location provides additional information on health facilities including the district
+* rw_onc_diagnosis pre-calculates details of oncology diagnoses for patients including when the diagnosis and enrollment occurred for calculation of survival times
+* rw_import_metadata provides details on the creation of the warehouse including its date and any comments
+* rw_calculated_visit is similar in idea to the OpenMRS visit table, but only combines encounters had by the same patient on the same day
+
+Further, there are billing tables matching the Rwanda MOH billing model
+* rw_bill
+* rw_patient_service
+* rw_refund
+* rw_insurance_policy
+* rw_payment
+
+On the omrs_program table, additional rows are added for 'diabetes type 1' and 'pdc malnutrition' which are not OpenMRS programs but are conveneint to treat like programs for ananlsis based on a diabetes type 1 diagnosis or first pdc malnutrition treatment respectively.
+
+=====================
+
+Warehouse Process - de-merging Kayonza and Kirehe
+
+As Kayonza and Kirehe previously shared a sync network, all patients (and programs...) are duplicated on both databases. For speed and simplicity, obs (as they are not modified) are simply taken from the Rwinkwavu instance. For other data, the 'date_updated' (the more recent between date_created and date_changed) is compared and the record with a more recent update is kept in the database while the other record is deleted. Then, the remaining record through the person_uuid is associated with the appropriate patient. 
+
+This process assumes that a patient is only ever updated on one server after the split.
+
+
+
+
