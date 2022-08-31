@@ -726,7 +726,7 @@ select		o.order_id,
 			drug_order.quantity,
 #			drug_order.equivalent_daily_dose, #was included but not used
 			drug.name as drug_name,
-			person.uuid as patient_uuid,
+			p.uuid as patient_uuid,
 			order_group.uuid as order_group_uuid
 			
 	
