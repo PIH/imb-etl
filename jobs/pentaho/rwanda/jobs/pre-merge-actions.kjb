@@ -322,7 +322,7 @@
       <yloc>176</yloc>
     </entry>
     <entry>
-      <name>Delete Rwink-Kirehe duplicates</name>
+      <name>Delete Rwink-Kirehe-duplicate-obs</name>
       <description/>
       <type>TRANS</type>
       <specification_method>filename</specification_method>
@@ -381,7 +381,7 @@
   <hops>
     <hop>
       <from>Load Configuration</from>
-      <to>Delete Rwink-Kirehe duplicates</to>
+      <to>Delete Rwink-Kirehe-duplicate-obs</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -404,8 +404,8 @@
 This has to be de-duplicated keeping one from that era, and making sure that the one chose is the one most recently edited. 
 Once this has been done for the patient table, all other tables can get their updated patient_id from the result
 </note>
-      <xloc>176</xloc>
-      <yloc>336</yloc>
+      <xloc>48</xloc>
+      <yloc>272</yloc>
       <width>986</width>
       <heigth>73</heigth>
       <fontname>Segoe UI</fontname>

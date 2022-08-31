@@ -7,9 +7,11 @@ configuration:
   jobs:
     - path: "create-omrs-schema.yml"
     - path: "create-rw-schema.yml"
-    - path: "refresh-rwinkwavu.yml"
-    - path: "refresh-butaro.yml"
     - path: "refresh-kirehe.yml"
+    - path: "pre-merge-actions.yml"
+    - path: "refresh-rwinkwavu.yml"
+    - path: "post-load-actions.yml"
+    - path: "refresh-butaro.yml"
     - path: "anonymize-rwanda.yml"
 
 # If you never want this to execute on a schedule, but rather plan to execute it only from startup.jobs, you can remove this schedule property
