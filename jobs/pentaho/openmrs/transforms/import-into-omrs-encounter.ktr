@@ -1141,6 +1141,10 @@ var prefixed_patient_id = id_prefix + patient_id;</jsScript_script>
         <column_name>patient_uuid</column_name>
         <stream_name>patient_uuid</stream_name>
       </field>
+      <field>
+        <column_name>visit_id_manual</column_name>
+        <stream_name>visit_id_manual</stream_name>
+      </field>
     </fields>
     <cluster_schema/>
     <remotesteps>

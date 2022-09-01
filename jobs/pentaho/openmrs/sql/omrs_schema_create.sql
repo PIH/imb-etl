@@ -69,7 +69,8 @@ CREATE TABLE omrs_encounter_provider (
   encounter_id INT not null,
   encounter_uuid CHAR(38) not null,
   provider VARCHAR(255),
-  provider_role VARCHAR(255)
+  provider_role VARCHAR(255),
+  visit_id_manual VARCHAR(50)
 );
 
 CREATE TABLE omrs_encounter (

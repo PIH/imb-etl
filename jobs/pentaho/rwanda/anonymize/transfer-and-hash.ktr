@@ -803,10 +803,9 @@ FROM omrs_program_enrollment;
     <connection>Warehouse</connection>
     <sql>SELECT 
   md5(patient_id) as patient_id,
-  encounter_date,
-  CONCAT(md5(patient_id),"-",  
-		adddate( makedate(year(encounter_date),1),
-				INTERVAL floor((MONTH(encounter_date)-1)/3) quarter)
+  adddate( makedate(year(encounter_date),1),
+				INTERVAL floor((MONTH(encounter_date)-1)/3) quarter) as encounter_date,
+  md5(visit_id
 	) as visit_id
 
 FROM rw_calculated_visit
@@ -853,7 +852,8 @@ FROM rw_calculated_visit
 	age_years_at_encounter,
 	1+ 3*floor((age_months_at_encounter-1)/3) as age_months_at_encounter,
 	adddate( makedate(year(date_created),1),
-		INTERVAL floor((MONTH(date_created)-1)/3) quarter) as date_created
+		INTERVAL floor((MONTH(date_created)-1)/3) quarter) as date_created,
+	md5(concat(patient_id,"-", encounter_date)) as visit_id_manual
 	
 FROM omrs_encounter;</sql>
     <limit>0</limit>
