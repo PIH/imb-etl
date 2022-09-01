@@ -7,6 +7,7 @@ CREATE TABLE rw_patient_service (
     is_paid int,
     service_name varchar(250),
     patient_bill_id INT,
-    category_name varchar(250)
+    category_name varchar(250),
+    patient_uuid CHAR(38)
 );
 

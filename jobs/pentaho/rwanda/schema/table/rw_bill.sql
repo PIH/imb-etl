@@ -8,6 +8,7 @@ CREATE TABLE rw_bill (
     created_date datetime default NULL,
     creator varchar(127),
     creator_uuid varchar(127),
-    patient_bill_id INT
+    patient_bill_id INT,
+    patient_uuid CHAR(38)
 );
 

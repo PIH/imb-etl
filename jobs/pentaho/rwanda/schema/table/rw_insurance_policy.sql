@@ -7,6 +7,7 @@ CREATE TABLE rw_insurance_policy (
     retire_reason varchar(250),
     third_part_rate decimal(20,2),
     insurance_company varchar(127),
-    owner_uuid varchar(45)
+    owner_uuid varchar(45),
+    patient_uuid CHAR(38)
 );
 

@@ -7,6 +7,7 @@ CREATE TABLE rw_payment (
     `is_cash` int,
     `is_deposit` int,
     patient_id int,
-    patient_bill_id int
+    patient_bill_id int,
+    patient_uuid CHAR(38)
 );
 
