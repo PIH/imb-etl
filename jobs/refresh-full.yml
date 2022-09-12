@@ -10,8 +10,9 @@ configuration:
     - path: "refresh-kirehe.yml"
     - path: "pre-merge-actions.yml"
     - path: "refresh-rwinkwavu.yml"
-    - path: "post-load-actions.yml"
+    - path: "post-merge-actions.yml"
     - path: "refresh-butaro.yml"
+    - path: "post-load-actions.yml"
     - path: "anonymize-rwanda.yml"
 
 # If you never want this to execute on a schedule, but rather plan to execute it only from startup.jobs, you can remove this schedule property
