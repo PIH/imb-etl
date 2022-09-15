@@ -114,6 +114,8 @@ warehouse.db.password = rootpw
 warehouse.db.key_prefix = 10
 ```
 
+* If developing on Linux locally, download the latest MySQL connector Jar and extract the connector jar and copy it into the data-integration/lib folder
+
 * Run "spoon.sh" to start
 
 Link your shared.xml to the shared file used by the project:
