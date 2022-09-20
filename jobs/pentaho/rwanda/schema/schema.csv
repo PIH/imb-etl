@@ -14,3 +14,4 @@ table,rw_refund
 table,rw_bill
 table,rw_insurance_policy
 table,rw_patient_service
+table,rw_last_encounter

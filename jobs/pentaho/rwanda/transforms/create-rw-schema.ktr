@@ -461,13 +461,13 @@ name of the table, function, or procedure stored within. </note>
   </notepads>
   <connection>
     <name>Warehouse</name>
-    <server>${warehouse.db.host}</server>
+    <server>localhost</server>
     <type>MYSQL</type>
     <access>Native</access>
-    <database>${warehouse.db.name}</database>
-    <port>${warehouse.db.port}</port>
-    <username>${warehouse.db.user}</username>
-    <password>${warehouse.db.password}</password>
+    <database>kirehe_warehouse</database>
+    <port>3306</port>
+    <username>ben</username>
+    <password>Encrypted 2be98afc86ae9bb93ae1ebb63dfdcfe88</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
@@ -510,7 +510,7 @@ name of the table, function, or procedure stored within. </note>
       </attribute>
       <attribute>
         <code>PORT_NUMBER</code>
-        <attribute>${warehouse.db.port}</attribute>
+        <attribute>3306</attribute>
       </attribute>
       <attribute>
         <code>PRESERVE_RESERVED_WORD_CASE</code>
@@ -616,6 +616,7 @@ var sqlPath = baseDir + "/" + country + "/schema/" + type + "/" + name + ".sql";
         <replace>N</replace>
       </field>
     </fields>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -649,6 +650,7 @@ var sqlPath = baseDir + "/" + country + "/schema/" + type + "/" + name + ".sql";
     <read_field/>
     <sqlFromfile>Y</sqlFromfile>
     <sendOneStatement>Y</sendOneStatement>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -682,6 +684,7 @@ var sqlPath = baseDir + "/" + country + "/schema/" + type + "/" + name + ".sql";
     <read_field/>
     <sqlFromfile>Y</sqlFromfile>
     <sendOneStatement>N</sendOneStatement>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -715,6 +718,7 @@ var sqlPath = baseDir + "/" + country + "/schema/" + type + "/" + name + ".sql";
     <read_field/>
     <sqlFromfile>N</sqlFromfile>
     <sendOneStatement>Y</sendOneStatement>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -765,6 +769,7 @@ var sqlPath = baseDir + "/" + country + "/schema/" + type + "/" + name + ".sql";
         <trim_type>none</trim_type>
       </field>
     </fields>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -801,6 +806,7 @@ var sqlPath = baseDir + "/" + country + "/schema/" + type + "/" + name + ".sql";
         <rightvalue/>
       </condition>
     </compare>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -837,6 +843,7 @@ var sqlPath = baseDir + "/" + country + "/schema/" + type + "/" + name + ".sql";
     <add_filename_result>N</add_filename_result>
     <parallel>N</parallel>
     <newline_possible>N</newline_possible>
+    <format/>
     <encoding/>
     <fields>
       <field>
@@ -862,6 +869,7 @@ var sqlPath = baseDir + "/" + country + "/schema/" + type + "/" + name + ".sql";
         <trim_type>none</trim_type>
       </field>
     </fields>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -899,6 +907,7 @@ var sqlPath = baseDir + "/" + country + "/schema/" + type + "/" + name + ".sql";
         <target_step>Create Table and Index</target_step>
       </case>
     </cases>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -917,4 +926,5 @@ var sqlPath = baseDir + "/" + country + "/schema/" + type + "/" + name + ".sql";
   <slave-step-copy-partition-distribution>
   </slave-step-copy-partition-distribution>
   <slave_transformation>N</slave_transformation>
+  <attributes/>
 </transformation>

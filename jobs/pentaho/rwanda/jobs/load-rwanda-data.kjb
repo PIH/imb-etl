@@ -296,6 +296,7 @@
       <name>START</name>
       <description/>
       <type>SPECIAL</type>
+      <attributes/>
       <start>Y</start>
       <dummy>N</dummy>
       <repeat>N</repeat>
@@ -311,11 +312,13 @@
       <nr>0</nr>
       <xloc>48</xloc>
       <yloc>160</yloc>
+      <attributes_kjc/>
     </entry>
     <entry>
       <name>Load location table </name>
       <description/>
       <type>TRANS</type>
+      <attributes/>
       <specification_method>filename</specification_method>
       <trans_object_id/>
       <filename>${PIH_PENTAHO_HOME}/rwanda/transforms/import-into-rw-location.ktr</filename>
@@ -339,6 +342,7 @@
       <create_parent_folder>N</create_parent_folder>
       <logging_remote_work>N</logging_remote_work>
       <run_configuration/>
+      <suppress_result_data>N</suppress_result_data>
       <parameters>
         <pass_all_parameters>Y</pass_all_parameters>
       </parameters>
@@ -347,11 +351,13 @@
       <nr>0</nr>
       <xloc>512</xloc>
       <yloc>16</yloc>
+      <attributes_kjc/>
     </entry>
     <entry>
       <name>Load Orders</name>
       <description/>
       <type>TRANS</type>
+      <attributes/>
       <specification_method>filename</specification_method>
       <trans_object_id/>
       <filename>${PIH_PENTAHO_HOME}/rwanda/transforms/import-into-rw-orders.ktr</filename>
@@ -375,6 +381,7 @@
       <create_parent_folder>N</create_parent_folder>
       <logging_remote_work>N</logging_remote_work>
       <run_configuration/>
+      <suppress_result_data>N</suppress_result_data>
       <parameters>
         <pass_all_parameters>Y</pass_all_parameters>
       </parameters>
@@ -383,11 +390,13 @@
       <nr>0</nr>
       <xloc>512</xloc>
       <yloc>96</yloc>
+      <attributes_kjc/>
     </entry>
     <entry>
       <name>Load Order Groups</name>
       <description/>
       <type>TRANS</type>
+      <attributes/>
       <specification_method>filename</specification_method>
       <trans_object_id/>
       <filename>${PIH_PENTAHO_HOME}/rwanda/transforms/import-into-rw-ordergroups.ktr</filename>
@@ -411,6 +420,7 @@
       <create_parent_folder>N</create_parent_folder>
       <logging_remote_work>N</logging_remote_work>
       <run_configuration/>
+      <suppress_result_data>N</suppress_result_data>
       <parameters>
         <pass_all_parameters>Y</pass_all_parameters>
       </parameters>
@@ -419,15 +429,18 @@
       <nr>1</nr>
       <xloc>512</xloc>
       <yloc>192</yloc>
+      <attributes_kjc/>
     </entry>
     <entry>
       <name>Load Configuration</name>
       <description/>
       <type>JOB</type>
+      <attributes/>
       <specification_method>filename</specification_method>
       <job_object_id/>
       <filename>${PIH_PENTAHO_HOME}/openmrs/load-configuration.kjb</filename>
       <jobname/>
+      <directory/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
       <exec_per_row>N</exec_per_row>
@@ -453,11 +466,13 @@
       <nr>0</nr>
       <xloc>304</xloc>
       <yloc>160</yloc>
+      <attributes_kjc/>
     </entry>
     <entry>
       <name>metadata</name>
       <description/>
       <type>TRANS</type>
+      <attributes/>
       <specification_method>filename</specification_method>
       <trans_object_id/>
       <filename>${PIH_PENTAHO_HOME}/rwanda/transforms/rw_import_metadata.ktr</filename>
@@ -481,6 +496,7 @@
       <create_parent_folder>N</create_parent_folder>
       <logging_remote_work>N</logging_remote_work>
       <run_configuration>Pentaho local</run_configuration>
+      <suppress_result_data>N</suppress_result_data>
       <parameters>
         <pass_all_parameters>Y</pass_all_parameters>
       </parameters>
@@ -489,11 +505,13 @@
       <nr>0</nr>
       <xloc>512</xloc>
       <yloc>272</yloc>
+      <attributes_kjc/>
     </entry>
     <entry>
       <name>pdc-malnutrition-program</name>
       <description/>
       <type>TRANS</type>
+      <attributes/>
       <specification_method>filename</specification_method>
       <trans_object_id/>
       <filename>${PIH_PENTAHO_HOME}/rwanda/transforms/pdc-malnutrition-program.ktr</filename>
@@ -517,6 +535,7 @@
       <create_parent_folder>N</create_parent_folder>
       <logging_remote_work>N</logging_remote_work>
       <run_configuration>Pentaho local</run_configuration>
+      <suppress_result_data>N</suppress_result_data>
       <parameters>
         <pass_all_parameters>Y</pass_all_parameters>
       </parameters>
@@ -525,11 +544,13 @@
       <nr>0</nr>
       <xloc>512</xloc>
       <yloc>432</yloc>
+      <attributes_kjc/>
     </entry>
     <entry>
       <name>calculated-visit-table</name>
       <description/>
       <type>TRANS</type>
+      <attributes/>
       <specification_method>filename</specification_method>
       <trans_object_id/>
       <filename>${PIH_PENTAHO_HOME}/rwanda/transforms/calculated-visit.ktr</filename>
@@ -553,6 +574,7 @@
       <create_parent_folder>N</create_parent_folder>
       <logging_remote_work>N</logging_remote_work>
       <run_configuration>Pentaho local</run_configuration>
+      <suppress_result_data>N</suppress_result_data>
       <parameters>
         <pass_all_parameters>Y</pass_all_parameters>
       </parameters>
@@ -561,11 +583,13 @@
       <nr>0</nr>
       <xloc>512</xloc>
       <yloc>352</yloc>
+      <attributes_kjc/>
     </entry>
     <entry>
       <name>Patient Service</name>
       <description/>
       <type>TRANS</type>
+      <attributes/>
       <specification_method>filename</specification_method>
       <trans_object_id/>
       <filename>${PIH_PENTAHO_HOME}/rwanda/transforms/patient_service.ktr</filename>
@@ -589,6 +613,7 @@
       <create_parent_folder>N</create_parent_folder>
       <logging_remote_work>N</logging_remote_work>
       <run_configuration>Pentaho local</run_configuration>
+      <suppress_result_data>N</suppress_result_data>
       <parameters>
         <pass_all_parameters>Y</pass_all_parameters>
       </parameters>
@@ -597,11 +622,13 @@
       <nr>0</nr>
       <xloc>160</xloc>
       <yloc>384</yloc>
+      <attributes_kjc/>
     </entry>
     <entry>
       <name>Payment</name>
       <description/>
       <type>TRANS</type>
+      <attributes/>
       <specification_method>filename</specification_method>
       <trans_object_id/>
       <filename>${PIH_PENTAHO_HOME}/rwanda/transforms/payment.ktr</filename>
@@ -625,6 +652,7 @@
       <create_parent_folder>N</create_parent_folder>
       <logging_remote_work>N</logging_remote_work>
       <run_configuration>Pentaho local</run_configuration>
+      <suppress_result_data>N</suppress_result_data>
       <parameters>
         <pass_all_parameters>Y</pass_all_parameters>
       </parameters>
@@ -633,11 +661,13 @@
       <nr>0</nr>
       <xloc>64</xloc>
       <yloc>448</yloc>
+      <attributes_kjc/>
     </entry>
     <entry>
       <name>Refund</name>
       <description/>
       <type>TRANS</type>
+      <attributes/>
       <specification_method>filename</specification_method>
       <trans_object_id/>
       <filename>${PIH_PENTAHO_HOME}/rwanda/transforms/rw_refund.ktr</filename>
@@ -661,6 +691,7 @@
       <create_parent_folder>N</create_parent_folder>
       <logging_remote_work>N</logging_remote_work>
       <run_configuration>Pentaho local</run_configuration>
+      <suppress_result_data>N</suppress_result_data>
       <parameters>
         <pass_all_parameters>Y</pass_all_parameters>
       </parameters>
@@ -669,11 +700,13 @@
       <nr>0</nr>
       <xloc>208</xloc>
       <yloc>448</yloc>
+      <attributes_kjc/>
     </entry>
     <entry>
       <name>Insurance_polcy</name>
       <description/>
       <type>TRANS</type>
+      <attributes/>
       <specification_method>filename</specification_method>
       <trans_object_id/>
       <filename>${PIH_PENTAHO_HOME}/rwanda/transforms/rw_insurance.ktr</filename>
@@ -697,6 +730,7 @@
       <create_parent_folder>N</create_parent_folder>
       <logging_remote_work>N</logging_remote_work>
       <run_configuration>Pentaho local</run_configuration>
+      <suppress_result_data>N</suppress_result_data>
       <parameters>
         <pass_all_parameters>Y</pass_all_parameters>
       </parameters>
@@ -705,11 +739,13 @@
       <nr>0</nr>
       <xloc>288</xloc>
       <yloc>384</yloc>
+      <attributes_kjc/>
     </entry>
     <entry>
       <name>Bill</name>
       <description/>
       <type>TRANS</type>
+      <attributes/>
       <specification_method>filename</specification_method>
       <trans_object_id/>
       <filename>${PIH_PENTAHO_HOME}/rwanda/transforms/rw_bill.ktr</filename>
@@ -733,6 +769,7 @@
       <create_parent_folder>N</create_parent_folder>
       <logging_remote_work>N</logging_remote_work>
       <run_configuration>Pentaho local</run_configuration>
+      <suppress_result_data>N</suppress_result_data>
       <parameters>
         <pass_all_parameters>Y</pass_all_parameters>
       </parameters>
@@ -741,6 +778,7 @@
       <nr>0</nr>
       <xloc>352</xloc>
       <yloc>448</yloc>
+      <attributes_kjc/>
     </entry>
   </entries>
   <hops>
@@ -794,9 +832,9 @@
       <to>pdc-malnutrition-program</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
+      <enabled>N</enabled>
+      <evaluation>N</evaluation>
+      <unconditional>Y</unconditional>
     </hop>
     <hop>
       <from>Load Configuration</from>
@@ -821,7 +859,7 @@
       <to>Patient Service</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
-      <enabled>Y</enabled>
+      <enabled>N</enabled>
       <evaluation>Y</evaluation>
       <unconditional>N</unconditional>
     </hop>
@@ -839,7 +877,7 @@
       <to>Insurance_polcy</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
-      <enabled>Y</enabled>
+      <enabled>N</enabled>
       <evaluation>Y</evaluation>
       <unconditional>N</unconditional>
     </hop>

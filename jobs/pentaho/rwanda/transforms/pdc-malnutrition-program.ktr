@@ -542,6 +542,7 @@
     <start_at>9990000</start_at>
     <increment_by>1</increment_by>
     <max_value>999999999</max_value>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -590,6 +591,9 @@ group by e.patient_id;</sql>
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
+    <cached_row_meta_active>N</cached_row_meta_active>
+    <row-meta/>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -633,30 +637,6 @@ group by e.patient_id;</sql>
     <return_field/>
     <fields>
       <field>
-        <column_name>patient_id</column_name>
-        <stream_name>patient_id</stream_name>
-      </field>
-      <field>
-        <column_name>location</column_name>
-        <stream_name>location</stream_name>
-      </field>
-      <field>
-        <column_name>enrollment_date</column_name>
-        <stream_name>min(e.encounter_date)</stream_name>
-      </field>
-      <field>
-        <column_name>age_years_at_enrollment</column_name>
-        <stream_name>age_years_at_encounter</stream_name>
-      </field>
-      <field>
-        <column_name>age_months_at_enrollment</column_name>
-        <stream_name>age_months_at_encounter</stream_name>
-      </field>
-      <field>
-        <column_name>completion_date</column_name>
-        <stream_name>cure_date</stream_name>
-      </field>
-      <field>
         <column_name>program_enrollment_id</column_name>
         <stream_name>program_enrollment_id</stream_name>
       </field>
@@ -665,10 +645,55 @@ group by e.patient_id;</sql>
         <stream_name>uuid</stream_name>
       </field>
       <field>
+        <column_name>patient_id</column_name>
+        <stream_name>patient_id</stream_name>
+      </field>
+      <field>
         <column_name>program</column_name>
         <stream_name>program</stream_name>
       </field>
+      <field>
+        <column_name>enrollment_date</column_name>
+        <stream_name>enrollment_date</stream_name>
+      </field>
+      <field>
+        <column_name>age_years_at_enrollment</column_name>
+        <stream_name>age_years_at_enrollment</stream_name>
+      </field>
+      <field>
+        <column_name>age_months_at_enrollment</column_name>
+        <stream_name>age_months_at_enrollment</stream_name>
+      </field>
+      <field>
+        <column_name>location</column_name>
+        <stream_name>location</stream_name>
+      </field>
+      <field>
+        <column_name>completion_date</column_name>
+        <stream_name>completion_date</stream_name>
+      </field>
+      <field>
+        <column_name>age_years_at_completion</column_name>
+        <stream_name>age_years_at_completion</stream_name>
+      </field>
+      <field>
+        <column_name>age_months_at_completion</column_name>
+        <stream_name>age_months_at_completion</stream_name>
+      </field>
+      <field>
+        <column_name>outcome</column_name>
+        <stream_name>outcome</stream_name>
+      </field>
+      <field>
+        <column_name>date_updated</column_name>
+        <stream_name>date_updated</stream_name>
+      </field>
+      <field>
+        <column_name>patient_uuid</column_name>
+        <stream_name>patient_uuid</stream_name>
+      </field>
     </fields>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -719,6 +744,7 @@ group by e.patient_id;</sql>
         <set_empty_string>N</set_empty_string>
       </field>
     </fields>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -756,6 +782,7 @@ group by e.patient_id;</sql>
     <read_field/>
     <arguments>
     </arguments>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -774,4 +801,5 @@ group by e.patient_id;</sql>
   <slave-step-copy-partition-distribution>
   </slave-step-copy-partition-distribution>
   <slave_transformation>N</slave_transformation>
+  <attributes/>
 </transformation>

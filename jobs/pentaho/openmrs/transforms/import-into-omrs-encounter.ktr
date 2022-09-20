@@ -661,6 +661,7 @@
     <keys_2>
       <key>encounter_uuid</key>
     </keys_2>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -699,6 +700,7 @@
         <trim_type>none</trim_type>
       </field>
     </fields>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -751,6 +753,9 @@ order by	e.uuid</sql>
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
+    <cached_row_meta_active>N</cached_row_meta_active>
+    <row-meta/>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -791,6 +796,9 @@ order by encounter_uuid</sql>
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
+    <cached_row_meta_active>N</cached_row_meta_active>
+    <row-meta/>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -838,6 +846,7 @@ order by encounter_uuid</sql>
         <type>String</type>
       </value>
     </lookup>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -885,6 +894,7 @@ order by encounter_uuid</sql>
         <type>String</type>
       </value>
     </lookup>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -932,6 +942,7 @@ order by encounter_uuid</sql>
         <type>String</type>
       </value>
     </lookup>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -979,6 +990,7 @@ order by encounter_uuid</sql>
         <type>String</type>
       </value>
     </lookup>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -1031,6 +1043,7 @@ var prefixed_patient_id = id_prefix + patient_id;</jsScript_script>
         <replace>Y</replace>
       </field>
     </fields>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -1141,11 +1154,8 @@ var prefixed_patient_id = id_prefix + patient_id;</jsScript_script>
         <column_name>patient_uuid</column_name>
         <stream_name>patient_uuid</stream_name>
       </field>
-      <field>
-        <column_name>visit_id_manual</column_name>
-        <stream_name>visit_id_manual</stream_name>
-      </field>
     </fields>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -1164,4 +1174,5 @@ var prefixed_patient_id = id_prefix + patient_id;</jsScript_script>
   <slave-step-copy-partition-distribution>
   </slave-step-copy-partition-distribution>
   <slave_transformation>N</slave_transformation>
+  <attributes/>
 </transformation>
