@@ -464,10 +464,10 @@ name of the table, function, or procedure stored within. </note>
     <server>localhost</server>
     <type>MYSQL</type>
     <access>Native</access>
-    <database>kirehe_warehouse</database>
-    <port>3306</port>
-    <username>ben</username>
-    <password>Encrypted 2be98afc86ae9bb93ae1ebb63dfdcfe88</password>
+    <database>${warehouse.db.name}</database>
+    <port>${warehouse.db.port}</port>
+    <username>${warehouse.db.user}</username>
+    <password>${warehouse.db.password}</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
@@ -510,7 +510,7 @@ name of the table, function, or procedure stored within. </note>
       </attribute>
       <attribute>
         <code>PORT_NUMBER</code>
-        <attribute>3306</attribute>
+        <attribute>${warehouse.db.port}</attribute>
       </attribute>
       <attribute>
         <code>PRESERVE_RESERVED_WORD_CASE</code>
