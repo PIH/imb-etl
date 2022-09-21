@@ -4,7 +4,7 @@ description: "Refresh data from Kirehe"
 parameters:
   pih.pentahoHome: "${petl.jobDir}/pentaho"
   openmrs.db.host: "${kireheOpenmrs.host}"
-  openmrs.db.port: "${kirehepenmrs.port}"
+  openmrs.db.port: "${kireheOpenmrs.port}"
   openmrs.db.name: "${kireheOpenmrs.databaseName}"
   openmrs.db.user: "${kireheOpenmrs.user}"
   openmrs.db.password: "${kireheOpenmrs.password}"
