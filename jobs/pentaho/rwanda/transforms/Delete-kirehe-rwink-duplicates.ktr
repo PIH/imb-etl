@@ -538,16 +538,17 @@ INNER JOIN (SELECT *,
 ) omrs_patient_identifier_versions on omrs_patient_identifier.uuid=omrs_patient_identifier.uuid
 where ranking>1
 ;
+#Todd or Ben should look into this logic
 DELETE rw_order from rw_order
 INNER JOIN (SELECT *, 
 	row_number() OVER (PARTITION BY uuid #the main ID or uuid of that table
 		order by start_date DESC
 	) ranking
-    from omrs_visit
-) order_versions on order_versions.uuid=rw_orders.uuid
+    from rw_order
+) order_versions on order_versions.uuid=rw_order.uuid
 where ranking>1
 ;
-###### I'm assuming that the above should be run based on date created (including orders which I moved)
+#Im assuming that the above should be run based on date created (including orders which I moved)
 
 DELETE omrs_program_enrollment from omrs_program_enrollment
 INNER JOIN (SELECT *, 
