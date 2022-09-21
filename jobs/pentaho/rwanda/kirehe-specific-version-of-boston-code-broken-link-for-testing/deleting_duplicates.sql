@@ -101,12 +101,13 @@ INNER JOIN (SELECT *,
 where ranking>1
 ;
 
+-- Todd or Ben should look into this code
 DELETE rw_order from rw_order
-INNER JOIN (SELECT *, 
+INNER JOIN (SELECT *,
 	RANK() OVER (PARTITION BY order_id #the main ID or uuid of that table
-		order by date_activated
+		order by date_created
 	) ranking
-    from omrs_visit
-) order_versions on order_versions.date_activated=rw_orders.date_activated
+    from rw_order
+) order_versions on order_versions.start_date=rw_order.start_date
 where ranking>1
 ;
