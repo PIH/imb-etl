@@ -441,7 +441,7 @@
     <type>MYSQL</type>
     <access>Native</access>
     <database>${warehouse.db.name}</database>
-    <port>${warehouse.db.port</port>
+    <port>${warehouse.db.port}</port>
     <username>${warehouse.db.user}</username>
     <password>${warehouse.db.password}</password>
     <servername/>
