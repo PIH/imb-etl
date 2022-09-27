@@ -107,7 +107,7 @@ CREATE TABLE omrs_visit (
 );
 
 CREATE TABLE omrs_obs_group (
-  obs_group_id INT not null,
+  obs_group_id BIGINT not null,
   uuid CHAR(38) not null,
   patient_id INT not null,
   encounter_id INT,
@@ -122,7 +122,7 @@ CREATE TABLE omrs_obs_group (
 );
 
 CREATE TABLE omrs_obs (
-  obs_id INT not null,
+  obs_id BIGINT not null,
   uuid CHAR(38) not null,
   patient_id INT not null,
   encounter_id INT,
@@ -139,7 +139,7 @@ CREATE TABLE omrs_obs (
   value_numeric DOUBLE DEFAULT NULL,
   value_text TEXT,
   comments VARCHAR(255),
-  obs_group_id INT,
+  obs_group_id BIGINT,
   date_created DATE,
   patient_uuid CHAR(38) not null
   
