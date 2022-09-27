@@ -462,7 +462,7 @@
       </attribute>
       <attribute>
         <code>PORT_NUMBER</code>
-        <attribute>${warehouse.db.port</attribute>
+        <attribute>${warehouse.db.port}</attribute>
       </attribute>
       <attribute>
         <code>PRESERVE_RESERVED_WORD_CASE</code>
@@ -508,50 +508,50 @@
     <single_statement>N</single_statement>
     <replace_variables>N</replace_variables>
     <quoteString>N</quoteString>
-    <sql>update omrs_encounter
-set encounter.patient_id = (SELECT patient_id from omrs_patient where omrs_patient.uuid=encounter.patient_uuid)
+    <sql>update omrs_encounter e
+set e.patient_id = (SELECT patient_id from omrs_patient where omrs_patient.patient_uuid=e.patient_uuid)
 ;
 
 update omrs_obs
-set orms_obs.patient_id = (SELECT patient_id from omrs_patient where omrs_patient.uuid=orms_obs.patient_uuid)
+set omrs_obs.patient_id = (SELECT patient_id from omrs_patient where omrs_patient.patient_uuid=omrs_obs.patient_uuid)
 ;
 
 update omrs_obs_group
-set omrs_obs_group.patient_id = (SELECT patient_id from omrs_patient where omrs_patient.uuid=omrs_obs_group.patient_uuid)
+set omrs_obs_group.patient_id = (SELECT patient_id from omrs_patient where omrs_patient.patient_uuid=omrs_obs_group.patient_uuid)
 ;
 
 update omrs_patient_identifier
-set omrs_patient_identifier.patient_id = (SELECT patient_id from omrs_patient where omrs_patient.uuid=omrs_patient_identifier.patient_uuid)
+set omrs_patient_identifier.patient_id = (SELECT patient_id from omrs_patient where omrs_patient.patient_uuid=omrs_patient_identifier.patient_uuid)
 ;
 
 update omrs_program_enrollment
-set omrs_program_enrollment.patient_id = (SELECT patient_id from omrs_patient where omrs_patient.uuid=omrs_program_enrollment.patient_uuid)
+set omrs_program_enrollment.patient_id = (SELECT patient_id from omrs_patient where omrs_patient.patient_uuid=omrs_program_enrollment.patient_uuid)
 ;
 
 update omrs_program_state
-set omrs_program_state.patient_id = (SELECT patient_id from omrs_patient where omrs_patient.uuid=omrs_program_state.patient_uuid)
+set omrs_program_state.patient_id = (SELECT patient_id from omrs_patient where omrs_patient.patient_uuid=omrs_program_state.patient_uuid)
 ;
 
 update omrs_relationship
-set omrs_relationship.patient_id = (SELECT patient_id from omrs_patient where omrs_patient.uuid=omrs_relationship.patient_uuid)
+set omrs_relationship.patient_id = (SELECT patient_id from omrs_patient where omrs_patient.patient_uuid=omrs_relationship.patient_uuid)
 ;
 
 update rw_order
-set rw_order.patient_id= (SELECT patient_id from omrs_patient where omrs_patient.uuid=rw_order.patient_uuid)
+set rw_order.patient_id= (SELECT patient_id from omrs_patient where omrs_patient.patient_uuid=rw_order.patient_uuid)
 ;
 
 update rw_bill
-set rw_bill.patient_id= (SELECT patient_id from omrs_patient where omrs_patient.uuid=rw_bill.patient_uuid)
+set rw_bill.patient_id= (SELECT patient_id from omrs_patient where omrs_patient.patient_uuid=rw_bill.patient_uuid)
 ;
 update rw_payment
-set rw_payment.patient_id= (SELECT patient_id from omrs_patient where omrs_patient.uuid=rw_payment.patient_uuid)
+set rw_payment.patient_id= (SELECT patient_id from omrs_patient where omrs_patient.patient_uuid=rw_payment.patient_uuid)
 ;
 
 update rw_insurance_policy
-set rw_insurance_policy.patient_id= (SELECT patient_id from omrs_patient where omrs_patient.uuid=rw_insurance_policy.patient_uuid)
+set rw_insurance_policy.patient_id= (SELECT patient_id from omrs_patient where omrs_patient.patient_uuid=rw_insurance_policy.patient_uuid)
 ;
 update rw_patient_services
-set rw_patient_services.patient_id= (SELECT patient_id from omrs_patient where omrs_patient.uuid=rw_patient_services.patient_uuid)
+set rw_patient_services.patient_id= (SELECT patient_id from omrs_patient where omrs_patient.patient_uuid=rw_patient_services.patient_uuid)
 ;</sql>
     <set_params>N</set_params>
     <insert_field/>
