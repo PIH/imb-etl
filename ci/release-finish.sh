@@ -15,14 +15,14 @@ git config --global user.email "pihinformatics@gmail.com"
 git config --global user.name "pihinformatics"
 
 git remote remove central || true
-git remote add central git@github.com:PIH/zl-etl.git
+git remote add central git@github.com:PIH/imb-etl.git
 git fetch central
 
 ### Clean up
 
 # For these to work, it's important that the Bamboo has git repository caching disabled for this repo/job.
 # Reset
-git reset --hard central/main
+git reset --hard central/master
 # Clean up stray local tags that didn't get pushed
 git tag -l | xargs git tag -d
 git fetch central --tags
@@ -47,5 +47,5 @@ sed -i "0,/<\/version>/{s/version>.*<\/version/version>${DEVELOPMENT_VERSION}<\/
 git add pom.xml
 if ! git diff --cached --exit-code; then
   git commit -m "update to ${DEVELOPMENT_VERSION}"
-  git push central main
+  git push central master
 fi
