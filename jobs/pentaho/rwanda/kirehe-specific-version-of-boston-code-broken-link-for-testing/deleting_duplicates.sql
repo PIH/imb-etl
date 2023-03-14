@@ -57,7 +57,7 @@ INNER JOIN (SELECT *,
 		order by date_created
 	) ranking
     from omrs_patient_identifier
-) omrs_patient_identifier_versions on omrs_patient_identifier.patient_identifier_id=omrs_patient_identifier.patient_identifier_id
+) omrs_patient_identifier_versions on omrs_patient_identifier_versions.patient_identifier_id=omrs_patient_identifier.patient_identifier_id
 where ranking>1
 ;
 
