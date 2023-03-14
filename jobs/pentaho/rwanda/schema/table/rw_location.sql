@@ -1,6 +1,7 @@
 
 CREATE TABLE rw_location (
-    name VARCHAR(255),
+	location_id INT,
+	name VARCHAR(255),
 	description VARCHAR(1023),
 	address1 VARCHAR(255),
 	address2 VARCHAR(255),
