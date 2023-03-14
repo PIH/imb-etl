@@ -535,7 +535,7 @@ INNER JOIN (SELECT *,
 		order by date_updated DESC
 	) ranking
     from omrs_patient_identifier
-) omrs_patient_identifier_versions on omrs_patient_identifier.uuid=omrs_patient_identifier.uuid
+) omrs_patient_identifier_versions on omrs_patient_identifier_versions.uuid=omrs_patient_identifier.uuid
 where ranking>1
 ;
 #Todd or Ben should look into this logic
