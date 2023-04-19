@@ -10,7 +10,7 @@ CREATE TABLE omrs_patient (
   last_name VARCHAR(50),
   gender CHAR(1),
   birthdate DATE,
-  birthdate_estimated BOOLEAN,
+  birthdate_estimated BIT,
   phone_number VARCHAR(50),
   country VARCHAR(50),
   state_province VARCHAR(255),
@@ -25,7 +25,7 @@ CREATE TABLE omrs_patient (
   address6 VARCHAR(255),
   latitude VARCHAR(50),
   longitude VARCHAR(50),
-  dead BOOLEAN,
+  dead BIT,
   death_date DATE,
   age_years_at_death INT,
   age_months_at_death INT,
@@ -81,7 +81,7 @@ CREATE TABLE omrs_encounter (
   age_years_at_encounter INT,
   age_months_at_encounter INT,
   date_created DATE,
-  `visit_id` int(11) DEFAULT NULL,
+  visit_id int NULL,
   created_by VARCHAR(100)
 );
 
@@ -122,8 +122,8 @@ CREATE TABLE omrs_obs (
   location VARCHAR(255),
   concept VARCHAR(255) not null,
   value_coded VARCHAR(255),
-  value_date DATE DEFAULT NULL,
-  value_numeric DOUBLE DEFAULT NULL,
+  value_date DATE NULL,
+  value_numeric FLOAT NULL,
   value_text TEXT,
   comments VARCHAR(255),
   obs_group_id varchar(32),
@@ -252,7 +252,7 @@ CREATE TABLE rw_order_group (
   order_set_name VARCHAR(255),
   order_set_description VARCHAR(1023),
   indication VARCHAR(255),
-  Order_day_registered char(38) DEFAULT NULL
+  Order_day_registered char(38) NULL
 
 );
 
@@ -267,7 +267,7 @@ CREATE TABLE rw_last_vl_include_blanks (
     location VARCHAR(255),
     value_coded VARCHAR(255),
     value_date DATE,
-    value_numeric DOUBLE DEFAULT NULL,
+    value_numeric FLOAT NULL,
     value_text TEXT,
     obs_group_id INT
 );
@@ -281,26 +281,26 @@ CREATE TABLE rw_last_obs_in_period (
     location VARCHAR(255),
     value_coded VARCHAR(255),
     value_date DATE,
-    value_numeric DOUBLE DEFAULT NULL,
+    value_numeric FLOAT NULL,
     value_text TEXT,
     obs_group_id varchar(32)
 );
 
-CREATE TABLE `pdc_z_score_input` (
-  `R_id` int(11) DEFAULT NULL,
-  `patient_id` VARCHAR(32) DEFAULT NULL,
-  `obs_date` text,
-  `oedema` int(11) DEFAULT NULL,
-  `lh` text,
-  `weight` double DEFAULT NULL,
-  `clenhei` int(11) DEFAULT NULL,
-  `sex` int(11) DEFAULT NULL,
-  `gestatiol_age_at_birth_in_weeks` text,
-  `agedays` int(11) DEFAULT NULL,
-  `zwfl` text,
-  `zwei` text,
-  `zlen` text
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE pdc_z_score_input (
+  R_id int NULL,
+  patient_id VARCHAR(32) NULL,
+  obs_date text,
+  oedema int NULL,
+  lh text,
+  weight FLOAT NULL,
+  clenhei int NULL,
+  sex int NULL,
+  gestatiol_age_at_birth_in_weeks text,
+  agedays int NULL,
+  zwfl text,
+  zwei text,
+  zlen text
+);
 
 
 CREATE TABLE rw_calculated_visit (
@@ -316,7 +316,7 @@ CREATE TABLE rw_bill (
     amount_insurance decimal(20,2),
     amount_patient decimal(20,2),
     is_paid int,
-    created_date datetime default NULL,
+    created_date datetime NULL,
     creator varchar(127),
     creator_uuid varchar(127),
     patient_bill_id VARCHAR(32),
@@ -350,11 +350,11 @@ CREATE TABLE rw_patient_service (
 CREATE TABLE rw_payment (
 	bill_payment_id VARCHAR(32),
     amount_paid decimal(20,2) NOT NULL,
-	`date_received` datetime DEFAULT NULL,
-    `collector` varchar(127),
+	date_received datetime NULL,
+    collector varchar(127),
     collector_uuid varchar(127),
-    `is_cash` int,
-    `is_deposit` int,
+    is_cash int,
+    is_deposit int,
     patient_id varchar(32),
     patient_bill_id varchar(32)
 );
@@ -362,7 +362,7 @@ CREATE TABLE rw_payment (
 CREATE TABLE rw_refund (
 	bill_payment_id VARCHAR(32),
     refunded_by varchar(127),
-    amount_refunded decimal(20,2) DEFAULT NULL,
+    amount_refunded decimal(20,2) NULL,
     refunded_by_person_uuid varchar(127)
 );
 
