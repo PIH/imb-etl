@@ -1,0 +1,7 @@
+databaseType: "mysql"
+host: ${datasources.openmrs.rwinkwavu.host}
+port: ${datasources.openmrs.rwinkwavu.port}
+databaseName: ${datasources.openmrs.rwinkwavu.databaseName}
+user: ${datasources.openmrs.rwinkwavu.user}
+password: ${datasources.openmrs.rwinkwavu.password}
+options: ${datasources.openmrs.rwinkwavu.options}
