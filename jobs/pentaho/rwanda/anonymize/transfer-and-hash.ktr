@@ -442,7 +442,7 @@
     <type>MSSQLNATIVE</type>
     <access>Native</access>
     <database>${anonymized.db.name}</database>
-    <port>1433</port>
+    <port>${anonymized.db.port}</port>
     <username>${anonymized.db.user}</username>
     <password>${anonymized.db.password}</password>
     <servername/>
@@ -471,7 +471,7 @@
       </attribute>
       <attribute>
         <code>PORT_NUMBER</code>
-        <attribute>1433</attribute>
+        <attribute>${anonymized.db.port}</attribute>
       </attribute>
       <attribute>
         <code>PRESERVE_RESERVED_WORD_CASE</code>
