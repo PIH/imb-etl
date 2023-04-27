@@ -439,40 +439,16 @@
   <connection>
     <name>Anonymized</name>
     <server>${anonymized.db.host}</server>
-    <type>MYSQL</type>
+    <type>MSSQLNATIVE</type>
     <access>Native</access>
     <database>${anonymized.db.name}</database>
-    <port>${anonymized.db.port}</port>
+    <port>1433</port>
     <username>${anonymized.db.user}</username>
     <password>${anonymized.db.password}</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
     <attributes>
-      <attribute>
-        <code>EXTRA_OPTION_MYSQL.defaultFetchSize</code>
-        <attribute>500</attribute>
-      </attribute>
-      <attribute>
-        <code>EXTRA_OPTION_MYSQL.rewriteBatchedStatements</code>
-        <attribute>true</attribute>
-      </attribute>
-      <attribute>
-        <code>EXTRA_OPTION_MYSQL.tcpKeepAlive</code>
-        <attribute>true</attribute>
-      </attribute>
-      <attribute>
-        <code>EXTRA_OPTION_MYSQL.useCompression</code>
-        <attribute>true</attribute>
-      </attribute>
-      <attribute>
-        <code>EXTRA_OPTION_MYSQL.useCursorFetch</code>
-        <attribute>true</attribute>
-      </attribute>
-      <attribute>
-        <code>EXTRA_OPTION_MYSQL.userServerPrepStmts</code>
-        <attribute>false</attribute>
-      </attribute>
       <attribute>
         <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
         <attribute>N</attribute>
@@ -486,8 +462,16 @@
         <attribute>N</attribute>
       </attribute>
       <attribute>
+        <code>MSSQLUseIntegratedSecurity</code>
+        <attribute>false</attribute>
+      </attribute>
+      <attribute>
+        <code>MSSQL_DOUBLE_DECIMAL_SEPARATOR</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
         <code>PORT_NUMBER</code>
-        <attribute>${anonymized.db.port}</attribute>
+        <attribute>1433</attribute>
       </attribute>
       <attribute>
         <code>PRESERVE_RESERVED_WORD_CASE</code>
@@ -496,10 +480,6 @@
       <attribute>
         <code>QUOTE_ALL_FIELDS</code>
         <attribute>N</attribute>
-      </attribute>
-      <attribute>
-        <code>STREAM_RESULTS</code>
-        <attribute>Y</attribute>
       </attribute>
       <attribute>
         <code>SUPPORTS_BOOLEAN_DATA_TYPE</code>
@@ -728,6 +708,9 @@ FROM omrs_program_state
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
+    <cached_row_meta_active>N</cached_row_meta_active>
+    <row-meta/>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -776,6 +759,9 @@ FROM omrs_program_enrollment;
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
+    <cached_row_meta_active>N</cached_row_meta_active>
+    <row-meta/>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -815,6 +801,9 @@ FROM rw_calculated_visit
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
+    <cached_row_meta_active>N</cached_row_meta_active>
+    <row-meta/>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -861,6 +850,9 @@ FROM omrs_encounter;</sql>
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
+    <cached_row_meta_active>N</cached_row_meta_active>
+    <row-meta/>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -944,6 +936,7 @@ FROM omrs_encounter;</sql>
         <stream_name>uuid</stream_name>
       </field>
     </fields>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -993,6 +986,9 @@ FROM rw_last_obs_in_period;
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
+    <cached_row_meta_active>N</cached_row_meta_active>
+    <row-meta/>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -1084,6 +1080,7 @@ FROM rw_last_obs_in_period;
         <stream_name>obs_group_id</stream_name>
       </field>
     </fields>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -1131,6 +1128,9 @@ FROM rw_last_vl_include_blanks;
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
+    <cached_row_meta_active>N</cached_row_meta_active>
+    <row-meta/>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -1222,6 +1222,7 @@ FROM rw_last_vl_include_blanks;
         <stream_name>obs_group_id</stream_name>
       </field>
     </fields>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -1265,6 +1266,9 @@ FROM rw_location;</sql>
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
+    <cached_row_meta_active>N</cached_row_meta_active>
+    <row-meta/>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -1352,6 +1356,7 @@ FROM rw_location;</sql>
         <stream_name>county_district</stream_name>
       </field>
     </fields>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -1406,6 +1411,9 @@ FROM omrs_obs;
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
+    <cached_row_meta_active>N</cached_row_meta_active>
+    <row-meta/>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -1521,6 +1529,7 @@ FROM omrs_obs;
         <stream_name>form</stream_name>
       </field>
     </fields>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -1644,6 +1653,7 @@ FROM omrs_obs;
         <stream_name>location</stream_name>
       </field>
     </fields>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -1701,6 +1711,9 @@ FROM rw_onc_diagnosis;
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
+    <cached_row_meta_active>N</cached_row_meta_active>
+    <row-meta/>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -1771,6 +1784,9 @@ FROM rw_order;
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
+    <cached_row_meta_active>N</cached_row_meta_active>
+    <row-meta/>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -1813,6 +1829,9 @@ FROM rw_order_group;
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
+    <cached_row_meta_active>N</cached_row_meta_active>
+    <row-meta/>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -1888,6 +1907,7 @@ FROM rw_order_group;
         <stream_name>indication</stream_name>
       </field>
     </fields>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -2063,6 +2083,7 @@ FROM rw_order_group;
         <stream_name>drug</stream_name>
       </field>
     </fields>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -2112,6 +2133,9 @@ FROM rw_order_group;
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
+    <cached_row_meta_active>N</cached_row_meta_active>
+    <row-meta/>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -2215,6 +2239,7 @@ FROM rw_order_group;
         <stream_name>date_created</stream_name>
       </field>
     </fields>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -2314,6 +2339,7 @@ FROM rw_order_group;
         <stream_name>uuid</stream_name>
       </field>
     </fields>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -2358,6 +2384,9 @@ FROM pdc_z_score_input</sql>
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
+    <cached_row_meta_active>N</cached_row_meta_active>
+    <row-meta/>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -2445,6 +2474,7 @@ FROM pdc_z_score_input</sql>
         <stream_name>R_id</stream_name>
       </field>
     </fields>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -2536,6 +2566,7 @@ FROM pdc_z_score_input</sql>
         <stream_name>uuid</stream_name>
       </field>
     </fields>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -2581,6 +2612,9 @@ FROM omrs_relationship;
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
+    <cached_row_meta_active>N</cached_row_meta_active>
+    <row-meta/>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -2656,6 +2690,7 @@ FROM omrs_relationship;
         <stream_name>md5(relationship_id)</stream_name>
       </field>
     </fields>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -2699,6 +2734,9 @@ FROM rw_bill;
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
+    <cached_row_meta_active>N</cached_row_meta_active>
+    <row-meta/>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -2774,6 +2812,7 @@ FROM rw_bill;
         <stream_name>patient_bill_id</stream_name>
       </field>
     </fields>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -2819,6 +2858,9 @@ FROM rw_insurance_policy;
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
+    <cached_row_meta_active>N</cached_row_meta_active>
+    <row-meta/>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -2894,6 +2936,7 @@ FROM rw_insurance_policy;
         <stream_name>owner_uuid</stream_name>
       </field>
     </fields>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -2937,6 +2980,9 @@ FROM rw_patient_service;
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
+    <cached_row_meta_active>N</cached_row_meta_active>
+    <row-meta/>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -3012,6 +3058,7 @@ FROM rw_patient_service;
         <stream_name>patient_bill_id</stream_name>
       </field>
     </fields>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -3055,6 +3102,9 @@ FROM rw_payment;
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
+    <cached_row_meta_active>N</cached_row_meta_active>
+    <row-meta/>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -3130,6 +3180,7 @@ FROM rw_payment;
         <stream_name>patient_bill_id</stream_name>
       </field>
     </fields>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -3168,6 +3219,9 @@ FROM rw_refund;
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
+    <cached_row_meta_active>N</cached_row_meta_active>
+    <row-meta/>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -3223,6 +3277,7 @@ FROM rw_refund;
         <stream_name>refunded_by_person_uuid</stream_name>
       </field>
     </fields>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -3278,6 +3333,7 @@ FROM rw_refund;
         <stream_name>visit_id</stream_name>
       </field>
     </fields>
+    <attributes/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -3296,4 +3352,5 @@ FROM rw_refund;
   <slave-step-copy-partition-distribution>
   </slave-step-copy-partition-distribution>
   <slave_transformation>N</slave_transformation>
+  <attributes/>
 </transformation>

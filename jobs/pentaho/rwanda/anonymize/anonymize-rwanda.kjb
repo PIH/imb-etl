@@ -20,7 +20,7 @@
   <connection>
     <name>anonymized_schema</name>
     <server>${anonymized.db.host}</server>
-    <type>MYSQL</type>
+    <type>MSSQLNATIVE</type>
     <access>Native</access>
     <database>${anonymized.db.name}</database>
     <port>${anonymized.db.port}</port>
@@ -30,30 +30,6 @@
     <data_tablespace/>
     <index_tablespace/>
     <attributes>
-      <attribute>
-        <code>EXTRA_OPTION_MYSQL.defaultFetchSize</code>
-        <attribute>500</attribute>
-      </attribute>
-      <attribute>
-        <code>EXTRA_OPTION_MYSQL.rewriteBatchedStatements</code>
-        <attribute>true</attribute>
-      </attribute>
-      <attribute>
-        <code>EXTRA_OPTION_MYSQL.tcpKeepAlive</code>
-        <attribute>true</attribute>
-      </attribute>
-      <attribute>
-        <code>EXTRA_OPTION_MYSQL.useCompression</code>
-        <attribute>true</attribute>
-      </attribute>
-      <attribute>
-        <code>EXTRA_OPTION_MYSQL.useCursorFetch</code>
-        <attribute>true</attribute>
-      </attribute>
-      <attribute>
-        <code>EXTRA_OPTION_MYSQL.userServerPrepStmts</code>
-        <attribute>false</attribute>
-      </attribute>
       <attribute>
         <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
         <attribute>N</attribute>
@@ -67,6 +43,14 @@
         <attribute>N</attribute>
       </attribute>
       <attribute>
+        <code>MSSQLUseIntegratedSecurity</code>
+        <attribute>false</attribute>
+      </attribute>
+      <attribute>
+        <code>MSSQL_DOUBLE_DECIMAL_SEPARATOR</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
         <code>PORT_NUMBER</code>
         <attribute>${anonymized.db.port}</attribute>
       </attribute>
@@ -77,10 +61,6 @@
       <attribute>
         <code>QUOTE_ALL_FIELDS</code>
         <attribute>N</attribute>
-      </attribute>
-      <attribute>
-        <code>STREAM_RESULTS</code>
-        <attribute>Y</attribute>
       </attribute>
       <attribute>
         <code>SUPPORTS_BOOLEAN_DATA_TYPE</code>
@@ -375,6 +355,7 @@
       <name>START</name>
       <description/>
       <type>SPECIAL</type>
+      <attributes/>
       <start>Y</start>
       <dummy>N</dummy>
       <repeat>N</repeat>
@@ -390,15 +371,18 @@
       <nr>0</nr>
       <xloc>112</xloc>
       <yloc>96</yloc>
+      <attributes_kjc/>
     </entry>
     <entry>
       <name>Load Configuration</name>
       <description/>
       <type>JOB</type>
+      <attributes/>
       <specification_method>filename</specification_method>
       <job_object_id/>
       <filename>${PIH_PENTAHO_HOME}/openmrs/load-configuration.kjb</filename>
       <jobname/>
+      <directory/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
       <exec_per_row>N</exec_per_row>
@@ -424,11 +408,13 @@
       <nr>0</nr>
       <xloc>240</xloc>
       <yloc>96</yloc>
+      <attributes_kjc/>
     </entry>
     <entry>
       <name>Transfer and Hash Data</name>
       <description/>
       <type>TRANS</type>
+      <attributes/>
       <specification_method>filename</specification_method>
       <trans_object_id/>
       <filename>${PIH_PENTAHO_HOME}/rwanda/anonymize/transfer-and-hash.ktr</filename>
@@ -452,6 +438,7 @@
       <create_parent_folder>N</create_parent_folder>
       <logging_remote_work>N</logging_remote_work>
       <run_configuration/>
+      <suppress_result_data>N</suppress_result_data>
       <parameters>
         <pass_all_parameters>Y</pass_all_parameters>
       </parameters>
@@ -460,11 +447,13 @@
       <nr>0</nr>
       <xloc>240</xloc>
       <yloc>384</yloc>
+      <attributes_kjc/>
     </entry>
     <entry>
       <name>Drop Anonymized Schema</name>
       <description/>
       <type>SQL</type>
+      <attributes/>
       <sql/>
       <useVariableSubstitution>F</useVariableSubstitution>
       <sqlfromfile>T</sqlfromfile>
@@ -476,11 +465,13 @@
       <nr>0</nr>
       <xloc>240</xloc>
       <yloc>192</yloc>
+      <attributes_kjc/>
     </entry>
     <entry>
       <name>Create Anonymized Schema</name>
       <description/>
       <type>SQL</type>
+      <attributes/>
       <sql/>
       <useVariableSubstitution>F</useVariableSubstitution>
       <sqlfromfile>T</sqlfromfile>
@@ -492,11 +483,13 @@
       <nr>0</nr>
       <xloc>240</xloc>
       <yloc>288</yloc>
+      <attributes_kjc/>
     </entry>
     <entry>
       <name>Delete Identifyable Obs</name>
       <description/>
       <type>SQL</type>
+      <attributes/>
       <sql/>
       <useVariableSubstitution>F</useVariableSubstitution>
       <sqlfromfile>T</sqlfromfile>
@@ -508,6 +501,7 @@
       <nr>0</nr>
       <xloc>240</xloc>
       <yloc>480</yloc>
+      <attributes_kjc/>
     </entry>
   </entries>
   <hops>
@@ -559,4 +553,5 @@
   </hops>
   <notepads>
   </notepads>
+  <attributes/>
 </job>
