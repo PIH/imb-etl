@@ -508,7 +508,7 @@
     <single_statement>N</single_statement>
     <replace_variables>N</replace_variables>
     <quoteString>N</quoteString>
-    <sql>update omrs_encounter e
+    <sql> <!-- Disabling these queries because they are failing. omrs_patient.patient_id column has null values  --><!-- update omrs_encounter e
 set e.patient_id = (SELECT patient_id from omrs_patient where omrs_patient.patient_uuid=e.patient_uuid)
 ;
 
@@ -552,7 +552,7 @@ set rw_insurance_policy.patient_id= (SELECT patient_id from omrs_patient where o
 ;
 update rw_patient_services
 set rw_patient_services.patient_id= (SELECT patient_id from omrs_patient where omrs_patient.patient_uuid=rw_patient_services.patient_uuid)
-;</sql>
+; -> </sql>
     <set_params>N</set_params>
     <insert_field/>
     <update_field/>
