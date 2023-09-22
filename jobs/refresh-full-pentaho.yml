@@ -5,15 +5,15 @@ type: "job-pipeline"
 description: "Recreate entire warehouse with data from Rwinkwavu, Butaro, and Kirehe"
 configuration:
   jobs:
-    - path: "create-omrs-schema.yml"
-    - path: "create-rw-schema.yml"
-    - path: "refresh-kirehe.yml"
-    - path: "pre-merge-actions.yml"
-    - path: "refresh-rwinkwavu.yml"
-    - path: "post-merge-actions.yml"
-    - path: "refresh-butaro.yml"
-    - path: "post-load-actions.yml"
-    - path: "anonymize-rwanda.yml"
+    - path: "pentaho/create-omrs-schema.yml"
+    - path: "pentaho/create-rw-schema.yml"
+    - path: "pentaho/refresh-kirehe.yml"
+    - path: "pentaho/pre-merge-actions.yml"
+    - path: "pentaho/refresh-rwinkwavu.yml"
+    - path: "pentaho/post-merge-actions.yml"
+    - path: "pentaho/refresh-butaro.yml"
+    - path: "pentaho/post-load-actions.yml"
+    - path: "pentaho/anonymize-rwanda.yml"
 
 # If you never want this to execute on a schedule, but rather plan to execute it only from startup.jobs, you can remove this schedule property
 # If you wish to execute the job on a different schedule, you can adjust that here

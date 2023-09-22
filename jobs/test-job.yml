@@ -1,0 +1,19 @@
+type: "job-pipeline"
+description: "Job testing"
+parameters:
+  siteName: "butaro"
+  partitionNum: "3"
+  conditional: ""
+  incrementalEnabled: "false"
+configuration:
+  jobs:
+    - path: "sql/create-partitions.yml"
+    - path: "sql/create-source-views-and-functions.yml"
+    - type: "iterating-job"
+      description: "Importing from ${siteName} using partition ${partitionNum}"
+      configuration:
+        maxConcurrentJobs: 1
+        jobTemplate:
+          path: "sql/import-to-table-partition.yml"
+        iterations:
+          - tableName: "omrs_diabetes_encounters"

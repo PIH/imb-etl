@@ -1,0 +1,20 @@
+# Each iteration uses the same partition num and site name in order to ensure data is not duplicated across
+# multiple partitions if the same table is defined in multiple nested jobs
+
+type: "job-pipeline"
+description: "Refreshing Rwanda data"
+configuration:
+  jobs:
+    - type: "iterating-job"
+      description: "Importing from ${siteName} using partition ${partitionNum}"
+      configuration:
+        maxConcurrentJobs: 20
+        jobTemplate:
+          path: "sql/refresh-base-tables.yml"
+        iterations:
+          - siteName: "kirehe"
+            partitionNum: "1"
+          - siteName: "rwinkwavu"
+            partitionNum: "2"
+          - siteName: "butaro"
+            partitionNum: "3"

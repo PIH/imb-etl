@@ -1,0 +1,18 @@
+# Template that takes in the following parameters
+# ${siteName}
+# ${partitionNum}
+# The purpose of this job is to refresh all of the DW table that are shared across multiple servers
+type: "job-pipeline"
+description: "Refreshing base tables for ${siteName} using partition ${partitionNum}"
+configuration:
+  jobs:
+    - path: "sql/create-source-views-and-functions.yml"
+    - type: "iterating-job"
+      description: "Importing from ${siteName} using partition ${partitionNum}"
+      configuration:
+        maxConcurrentJobs: 1 # Import into up to 1 table concurrently
+        jobTemplate:
+          path: "sql/import-to-table-partition.yml"
+        iterations:
+          - tableName: "omrs_diabetes_patients_demographics"
+          - tableName: "omrs_diabetes_encounters"
