@@ -1,131 +1,273 @@
-select   
-	enc.patient_id as patient_id,
-	(select value_numeric from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @SERUM_GLUCOSE limit 1) as SERUM_GLUCOSE,
-	(select value_numeric from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @SERUM_CREATININE limit 1) as SERUM_CREATININE,
-	(select concept_name(value_coded,'en') from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @Glucose_Test limit 1) as Glucose_Test,
-	(select value_numeric from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @PULSE limit 1) as PULSE,
-	(select concept_name(value_coded,'en') from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @Compliance limit 1) as Compliance,
-	(select concept_name(value_coded,'en') from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @HYPOGLYCEMIA limit 1) as HYPOGLYCEMIA,
-	(select value_numeric from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @WEIGHT_KG limit 1) as WEIGHT_KG,
-	(select value_numeric from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @HbA1c limit 1) as HbA1c,
-	(select value_numeric from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @URINARY_ALBUMIN limit 1) as URINARY_ALBUMIN,
-	(select value_numeric from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @DIASTOLIC_BLOOD_PRESSURE limit 1) as DIASTOLIC_BLOOD_PRESSURE,
-	(select value_numeric from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @SYSTOLIC_BLOOD_PRESSURE limit 1) as SYSTOLIC_BLOOD_PRESSURE,
-	(select value_numeric from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @Sensation_in_right_foot limit 1) as Sensation_in_right_foot,
-	(select concept_name(value_coded,'en') from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @Sensation_in_left_foot limit 1) as Sensation_in_left_foot,
-	(select value_numeric from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @RETURN_VISIT_DATE limit 1) as RETURN_VISIT_DATE,
-	(select value_datetime from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @EXTREMITY_EXAM_FINDINGS limit 1) as EXTREMITY_EXAM_FINDINGS,
-	(select concept_name(value_coded,'en') from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @HEIGHT_CM limit 1) as HEIGHT_CM,
-	(select value_numeric from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @Physical_pain_score limit 1) as Physical_pain_score,
-	(select value_numeric from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @Psychological_pain_score limit 1) as Psychological_pain_score,
-	(select concept_name(value_coded,'en') from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @Spiritual_pain_score limit 1) as Spiritual_pain_score,
-	(select concept_name(value_coded,'en') from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @Pain_score_comments limit 1) as Pain_score_comments,
-	(select value_text from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @COMMENTS_AT_CONCLUSION_OF_EXAMINATION limit 1) as COMMENTS_AT_CONCLUSION_OF_EXAMINATION,
-	(select value_text from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @Part_of_the_day limit 1) as Part_of_the_day,
-	(select concept_name(value_coded,'en') from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @CREATININE_CLEARANCE limit 1) as CREATININE_CLEARANCE,
-	(select value_numeric from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @SERUM_SODIUM limit 1) as SERUM_SODIUM,
-	(select value_numeric from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @SERUM_POTASSIUM limit 1) as SERUM_POTASSIUM,
-	(select value_numeric from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @BODY_MASS_INDEX_MEASURED limit 1) as BODY_MASS_INDEX_MEASURED,
-	(select value_numeric from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @OPHTHALMOLOGY_SERVICE limit 1) as OPHTHALMOLOGY_SERVICE,
-	(select value_text from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @MORNING_DOSE_IN_MILLIGRAMS limit 1) as MORNING_DOSE_IN_MILLIGRAMS,
-	(select value_numeric from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @NIGHT_DOSE_IN_MILLIGRAMS limit 1) as NIGHT_DOSE_IN_MILLIGRAMS,
-	(select value_numeric from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @BED_TIME_DOSE_IN_MILLIGRAMS limit 1) as BED_TIME_DOSE_IN_MILLIGRAMS,
-	(select value_numeric from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @Diagnosis_or_problem_non_coded limit 1) as Diagnosis_or_problem_non_coded,
-	(select value_text from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @Pain_drugs limit 1) as Pain_drugs,
-	(select concept_name(value_coded,'en') from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @other_pain_drugs limit 1) as other_pain_drugs,
-	(select value_text from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @NOON_DOSE_IN_MILLIGRAMS limit 1) as NOON_DOSE_IN_MILLIGRAMS,
-	(select value_numeric from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @OTHER_LAB_TEST_NAME limit 1) as OTHER_LAB_TEST_NAME,
-	(select value_text from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @OTHER_LAB_TEST_RESULT limit 1) as OTHER_LAB_TEST_RESULT,
-	(select value_text from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @ABDOMINAL_EXAM_FINDINGS limit 1) as ABDOMINAL_EXAM_FINDINGS,
-	(select concept_name(value_coded,'en') from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @CURRENT_COMPLAINTS_OR_SYMPTOMS limit 1) as CURRENT_COMPLAINTS_OR_SYMPTOMS,
-	(select value_text from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @Surgical_history limit 1) as Surgical_history,
-	(select value_text from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @MEDICATION_HISTORY limit 1) as MEDICATION_HISTORY,
-	(select concept_name(value_coded,'en') from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @ALLERGIC limit 1) as ALLERGIC,
-	(select concept_name(value_coded,'en') from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @TYPE_OF_REFERRING_CLINIC_OR_HOSPITAL limit 1) as TYPE_OF_REFERRING_CLINIC_OR_HOSPITAL,
-	(select concept_name(value_coded,'en') from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @NAME_OF_REFERRING_SITE limit 1) as NAME_OF_REFERRING_SITE,
-	(select value_text from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @UROGENITAL_EXAM_FINDINGS limit 1) as UROGENITAL_EXAM_FINDINGS,
-	(select concept_name(value_coded,'en') from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @Type_of_diabetes_diagnosis limit 1) as Type_of_diabetes_diagnosis,
-	(select concept_name(value_coded,'en') from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @LUNG_EXAM_FINDINGS limit 1) as LUNG_EXAM_FINDINGS,
-	(select concept_name(value_coded,'en') from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @RESPIRATORY_RATE limit 1) as RESPIRATORY_RATE,
-	(select value_numeric from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @CHRONIC_CARE_DIAGNOSIS limit 1) as CHRONIC_CARE_DIAGNOSIS,
-	(select concept_name(value_coded,'en') from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @GENERAL_EXAM_FINDINGS limit 1) as GENERAL_EXAM_FINDINGS,
-	(select concept_name(value_coded,'en') from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @BLOOD_OXYGEN_SATURATION limit 1) as BLOOD_OXYGEN_SATURATION,
-	(select value_numeric from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @Chest_Thorax_Exam_Findings limit 1) as Chest_Thorax_Exam_Findings,
-	(select concept_name(value_coded,'en') from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @UBUDEHE_CATEGORY limit 1) as UBUDEHE_CATEGORY,
-	(select concept_name(value_coded,'en') from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @PATIENTS_FLUID_MANAGEMENT limit 1) as PATIENTS_FLUID_MANAGEMENT,
-	(select concept_name(value_coded,'en') from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @HEENT_EXAM_FINDINGS limit 1) as HEENT_EXAM_FINDINGS,
-	(select concept_name(value_coded,'en') from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @CARDIAC_MEDICATION limit 1) as CARDIAC_MEDICATION,
-	(select concept_name(value_coded,'en') from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @CARDIAC_EXAM_FINDINGS limit 1) as CARDIAC_EXAM_FINDINGS,
-	(select concept_name(value_coded,'en') from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @NEUROLOGICAL_EXAM_FINDINGS limit 1) as NEUROLOGICAL_EXAM_FINDINGS,
-	(select concept_name(value_coded,'en') from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @TEMPERATURE_C limit 1) as TEMPERATURE_C,
-	(select value_numeric from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @Clinican_notes limit 1) as Clinican_notes,
-	(select value_text from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @Obstestrical limit 1) as Obstestrical,
-	(select value_text from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @HEMATOCRIT limit 1) as HEMATOCRIT,
-	(select value_numeric from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @ASAT_RESULT limit 1) as ASAT_RESULT,
-	(select value_text from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @RESULT_OF_HIV_TEST limit 1) as RESULT_OF_HIV_TEST,
-	(select concept_name(value_coded,'en') from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @MONOCYTES limit 1) as MONOCYTES,
-	(select value_numeric from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @TIME_UNITS limit 1) as TIME_UNITS,
-	(select concept_name(value_coded,'en') from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @Morning_Dose_in_Units limit 1) as Morning_Dose_in_Units,
-	(select value_numeric from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @Diabetes_Medications limit 1) as Diabetes_Medications,
-	(select concept_name(value_coded,'en') from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @Evening_Dose_in_Units limit 1) as Evening_Dose_in_Units,
-	(select value_numeric from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @Noon_Dose_in_Units limit 1) as Noon_Dose_in_Units,
-	(select value_numeric from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @PLATELETS limit 1) as PLATELETS,
-	(select value_numeric from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @LYMPHOCYTES limit 1) as LYMPHOCYTES,
-	(select value_numeric from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @NEUTROPHILS limit 1) as NEUTROPHILS,
-	(select value_numeric from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @Bedtime_Dose_in_Units limit 1) as Bedtime_Dose_in_Units,
-	(select value_text from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @RED_BLOOD_CELLS limit 1) as RED_BLOOD_CELLS,
-	(select value_numeric from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @WHITE_BLOOD_CELLS limit 1) as WHITE_BLOOD_CELLS,
-	(select value_numeric from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @BLOOD_UREA_NITROGEN limit 1) as BLOOD_UREA_NITROGEN,
-	(select value_numeric from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @ALAT_RESULT limit 1) as ALAT_RESULT,
-	(select value_text from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @Patient_Medical_History limit 1) as Patient_Medical_History,
-	(select concept_name(value_coded,'en') from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @EOSINOPHILS limit 1) as EOSINOPHILS,
-	(select value_numeric from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @Duration limit 1) as Duration,
-	(select value_numeric from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @HEMOGLOBIN limit 1) as HEMOGLOBIN,
-	(select value_numeric from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @Other limit 1) as Other,
-	(select value_text from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @patient_chronic_disease_history limit 1) as patient_chronic_disease_history,
-	(select concept_name(value_coded,'en') from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @TELEPHONE_NUMBER limit 1) as TELEPHONE_NUMBER,
-	(select value_text from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @Patients_Contact_Phone_Owner limit 1) as Patients_Contact_Phone_Owner,
-	(select concept_name(value_coded,'en') from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @Family_Care_giver_Phone_Number limit 1) as Family_Care_giver_Phone_Number,
-	(select value_text from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @NAME_OF_HEALTH_CARE_PROVIDER limit 1) as NAME_OF_HEALTH_CARE_PROVIDER,
-	(select value_text from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @PREVIOUS_MEDICAL_HISTORY limit 1) as PREVIOUS_MEDICAL_HISTORY,
-	(select value_text from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @DDB_ECHOCARDIOGRAPH_RESULT limit 1) as DDB_ECHOCARDIOGRAPH_RESULT,
-	(select concept_name(value_coded,'en') from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @treatment_appoach limit 1) as treatment_appoach,
-	(select concept_name(value_coded,'en') from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @Family_Care_giver_name limit 1) as Family_Care_giver_name,
-	(select value_text from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @TOTAL_PROTEIN limit 1) as TOTAL_PROTEIN,
-	(select value_numeric from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @Family_member_suffered_from_Chronic_disease limit 1) as Family_member_suffered_from_Chronic_disease,
-	(select concept_name(value_coded,'en') from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @Chronic_Respiratory_diseases limit 1) as Chronic_Respiratory_diseases,
-	(select concept_name(value_coded,'en') from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @Other_Disease_text limit 1) as Other_Disease_text,
-	(select value_text from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @ALLERGY_COMMENT limit 1) as ALLERGY_COMMENT,
-	(select value_text from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @Family_Member_Chronic_Diseases limit 1) as Family_Member_Chronic_Diseases,
-	(select concept_name(value_coded,'en') from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @ketone limit 1) as ketone,
-	(select value_numeric from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @Other_clinical_diagnosis_non_coded limit 1) as Other_clinical_diagnosis_non_coded,
-	(select value_text from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @Hypertension_Stages limit 1) as Hypertension_Stages,
-	(select concept_name(value_coded,'en') from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @BASOPHILS limit 1) as BASOPHILS,
-	(select value_numeric from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @X_RAY_CHEST limit 1) as X_RAY_CHEST,
-	(select concept_name(value_coded,'en') from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @Renal_Failure_Stages limit 1) as Renal_Failure_Stages,
-	(select concept_name(value_coded,'en') from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @Other_Diabetes_Drug limit 1) as Other_Diabetes_Drug,
-	(select value_text from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @ELECTROCARDIOGRAM_DIAGNOSIS limit 1) as ELECTROCARDIOGRAM_DIAGNOSIS,
-	(select concept_name(value_coded,'en') from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @other_medical_findings limit 1) as other_medical_findings,
-	(select value_text from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @ELECTROCARDIOGRAM_DIAGNOSIS_text limit 1) as ELECTROCARDIOGRAM_DIAGNOSIS_text,
-	(select value_text from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @Asthma_medications limit 1) as Asthma_medications,
-	(select concept_name(value_coded,'en') from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @Predicted_Peak_Flow limit 1) as Predicted_Peak_Flow,
-	(select value_numeric from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @Peak_flow_before_salbutamol limit 1) as Peak_flow_before_salbutamol,
-	(select value_numeric from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @Clinical_diagnosis_for_asthma limit 1) as Clinical_diagnosis_for_asthma,
-	(select concept_name(value_coded,'en') from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @Peak_flow_after_salbutamol limit 1) as Peak_flow_after_salbutamol,
-	(select value_numeric from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @ECHOCARDIOGRAM_COMMENT limit 1) as ECHOCARDIOGRAM_COMMENT,
-	(select value_text from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @Home_Based_Care_Practionner_Phone_Number limit 1) as Home_Based_Care_Practionner_Phone_Number,
-	(select value_text from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @OTHER_GENERAL_EXAM_FINDINGS limit 1) as OTHER_GENERAL_EXAM_FINDINGS,
-	(select value_text from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @Scar_Location limit 1) as Scar_Location,
-	(select value_text from obs O where O.encounter_id=enc.encounter_id and voided=0 and O.concept_id= @result_to_other_medical_findings limit 1) as result_to_other_medical_findings
+# First create a temporary table to hold the data to export
+create temporary table temp_diabetes_encounters (
+    PATIENT_ID int,
+    ENCOUNTER_ID int,
+    SERUM_GLUCOSE double,
+    SERUM_CREATININE double,
+    Glucose_Test text,
+    PULSE double,
+    Compliance text,
+    HYPOGLYCEMIA text,
+    WEIGHT_KG double,
+    HbA1c double,
+    URINARY_ALBUMIN double,
+    DIASTOLIC_BLOOD_PRESSURE double,
+    SYSTOLIC_BLOOD_PRESSURE double,
+    Sensation_in_right_foot double,
+    Sensation_in_left_foot text,
+    RETURN_VISIT_DATE double,
+    EXTREMITY_EXAM_FINDINGS datetime,
+    HEIGHT_CM text,
+    Physical_pain_score double,
+    Psychological_pain_score double,
+    Spiritual_pain_score text,
+    Pain_score_comments text,
+    COMMENTS_AT_CONCLUSION_OF_EXAMINATION varchar(255),
+    Part_of_the_day varchar(255),
+    CREATININE_CLEARANCE text,
+    SERUM_SODIUM double,
+    SERUM_POTASSIUM double,
+    BODY_MASS_INDEX_MEASURED double,
+    OPHTHALMOLOGY_SERVICE double,
+    MORNING_DOSE_IN_MILLIGRAMS varchar(255),
+    NIGHT_DOSE_IN_MILLIGRAMS double,
+    BED_TIME_DOSE_IN_MILLIGRAMS double,
+    Diagnosis_or_problem_non_coded double,
+    Pain_drugs varchar(255),
+    other_pain_drugs text,
+    NOON_DOSE_IN_MILLIGRAMS varchar(255),
+    OTHER_LAB_TEST_NAME double,
+    OTHER_LAB_TEST_RESULT varchar(255),
+    ABDOMINAL_EXAM_FINDINGS varchar(255),
+    CURRENT_COMPLAINTS_OR_SYMPTOMS text,
+    Surgical_history varchar(255),
+    MEDICATION_HISTORY varchar(255),
+    ALLERGIC text,
+    TYPE_OF_REFERRING_CLINIC_OR_HOSPITAL text,
+    NAME_OF_REFERRING_SITE text,
+    UROGENITAL_EXAM_FINDINGS varchar(255),
+    Type_of_diabetes_diagnosis text,
+    LUNG_EXAM_FINDINGS text,
+    RESPIRATORY_RATE text,
+    CHRONIC_CARE_DIAGNOSIS double,
+    GENERAL_EXAM_FINDINGS text,
+    BLOOD_OXYGEN_SATURATION text,
+    Chest_Thorax_Exam_Findings double,
+    UBUDEHE_CATEGORY text,
+    PATIENTS_FLUID_MANAGEMENT text,
+    HEENT_EXAM_FINDINGS text,
+    CARDIAC_MEDICATION text,
+    CARDIAC_EXAM_FINDINGS text,
+    NEUROLOGICAL_EXAM_FINDINGS text,
+    TEMPERATURE_C text,
+    Clinican_notes double,
+    Obstestrical varchar(255),
+    HEMATOCRIT varchar(255),
+    ASAT_RESULT double,
+    RESULT_OF_HIV_TEST varchar(255),
+    MONOCYTES text,
+    TIME_UNITS double,
+    Morning_Dose_in_Units text,
+    Diabetes_Medications double,
+    Evening_Dose_in_Units text,
+    Noon_Dose_in_Units double,
+    PLATELETS double,
+    LYMPHOCYTES double,
+    NEUTROPHILS double,
+    Bedtime_Dose_in_Units double,
+    RED_BLOOD_CELLS varchar(255),
+    WHITE_BLOOD_CELLS double,
+    BLOOD_UREA_NITROGEN double,
+    ALAT_RESULT double,
+    Patient_Medical_History varchar(255),
+    EOSINOPHILS text,
+    Duration double,
+    HEMOGLOBIN double,
+    Other double,
+    patient_chronic_disease_history varchar(255),
+    TELEPHONE_NUMBER text,
+    Patient_Contact_Phone_Owner varchar(255),
+    Family_Care_giver_Phone_Number text,
+    NAME_OF_HEALTH_CARE_PROVIDER varchar(255),
+    PREVIOUS_MEDICAL_HISTORY varchar(255),
+    DDB_ECHOCARDIOGRAPH_RESULT varchar(255),
+    treatment_appoach text,
+    Family_Care_giver_name text,
+    TOTAL_PROTEIN varchar(255),
+    Family_member_suffered_from_Chronic_disease double,
+    Chronic_Respiratory_diseases text,
+    Other_Disease_text text,
+    ALLERGY_COMMENT varchar(255),
+    Family_Member_Chronic_Diseases varchar(255),
+    ketone text,
+    Other_clinical_diagnosis_non_coded double,
+    Hypertension_Stages varchar(255),
+    BASOPHILS text,
+    X_RAY_CHEST double,
+    Renal_Failure_Stages text,
+    Other_Diabetes_Drug text,
+    ELECTROCARDIOGRAM_DIAGNOSIS varchar(255),
+    other_medical_findings varchar(255),
+    ELECTROCARDIOGRAM_DIAGNOSIS_text varchar(255),
+    Asthma_medications varchar(255),
+    Predicted_Peak_Flow text,
+    Peak_flow_before_salbutamol double,
+    Clinical_diagnosis_for_asthma double,
+    Peak_flow_after_salbutamol text,
+    ECHOCARDIOGRAM_COMMENT double,
+    Home_Based_Care_Practionner_Phone_Number varchar(255),
+    OTHER_GENERAL_EXAM_FINDINGS varchar(255),
+    Scar_Location varchar(255),
+    result_to_other_medical_findings varchar(255)
+);
 
-		
-    from encounter enc
-		inner join form f on f.form_id=enc.form_id
-	 where f.name in 
+# Populate the "rows" of this table to contain all diabetes encounters
+
+insert into temp_diabetes_encounters (patient_id, encounter_id)
+select enc.patient_id, enc.encounter_id 
+from encounter enc
+inner join form f on f.form_id=enc.form_id
+where f.name in 
 	(
 		'NCD Diabetes: rendez-vous','NCD Diabetes: Medication List','NCD Diabetes: Insulin List'
 		,'NCD Diabetes: Other Investigations','NCD Diabetes: EXAM LABORATORY TEST','NCD Diabetes: Diagnosis and Problems',
 		'NCD DIABETES: Exit from Care Information','NCD Diabetes: Enrollment form'
 	)
+;
 
-    ;
+# Populate the "columns" of this table to contain data for each encounter row
+
+# To optimize performance, first reduce the size of the observations being queried to those non-voided in these encounters
+DROP TEMPORARY TABLE IF EXISTS temp_obs;
+create temporary table temp_obs
+select o.obs_id, o.obs_group_id, o.encounter_id, o.person_id, o.concept_id, o.value_coded, o.value_numeric,
+       o.value_text, o.value_datetime, o.value_coded_name_id, o.comments, o.date_created, o.value_drug, o.obs_datetime
+from obs o
+         inner join temp_diabetes_encounters t on t.encounter_id = o.encounter_id
+where o.voided = 0
+;
+
+# Add indexes on these for further query performance
+create index temp_obs_oi on temp_obs(obs_id);
+create index temp_obs_ci1 on temp_obs(encounter_id, concept_id);
+create index temp_obs_ci2 on temp_obs(obs_group_id, concept_id);
+
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.SERUM_GLUCOSE = o.value_numeric where o.concept_id = @SERUM_GLUCOSE;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.SERUM_CREATININE = o.value_numeric where o.concept_id = @SERUM_CREATININE;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.Glucose_Test = concept_name(o.value_coded, 'en') where o.concept_id = @Glucose_Test;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.PULSE = o.value_numeric where o.concept_id = @PULSE;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.Compliance = concept_name(o.value_coded, 'en') where o.concept_id = @Compliance;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.HYPOGLYCEMIA = concept_name(o.value_coded, 'en') where o.concept_id = @HYPOGLYCEMIA;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.WEIGHT_KG = o.value_numeric where o.concept_id = @WEIGHT_KG;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.HbA1c = o.value_numeric where o.concept_id = @HbA1c;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.URINARY_ALBUMIN = o.value_numeric where o.concept_id = @URINARY_ALBUMIN;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.DIASTOLIC_BLOOD_PRESSURE = o.value_numeric where o.concept_id = @DIASTOLIC_BLOOD_PRESSURE;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.SYSTOLIC_BLOOD_PRESSURE = o.value_numeric where o.concept_id = @SYSTOLIC_BLOOD_PRESSURE;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.Sensation_in_right_foot = o.value_numeric where o.concept_id = @Sensation_in_right_foot;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.Sensation_in_left_foot = concept_name(o.value_coded, 'en') where o.concept_id = @Sensation_in_left_foot;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.RETURN_VISIT_DATE = o.value_datetime where o.concept_id = @RETURN_VISIT_DATE;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.EXTREMITY_EXAM_FINDINGS = o.value_datetime where o.concept_id = @EXTREMITY_EXAM_FINDINGS;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.HEIGHT_CM = concept_name(o.value_coded, 'en') where o.concept_id = @HEIGHT_CM;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.Physical_pain_score = o.value_numeric where o.concept_id = @Physical_pain_score;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.Psychological_pain_score = o.value_numeric where o.concept_id = @Psychological_pain_score;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.Spiritual_pain_score = concept_name(o.value_coded, 'en') where o.concept_id = @Spiritual_pain_score;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.Pain_score_comments = concept_name(o.value_coded, 'en') where o.concept_id = @Pain_score_comments;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.COMMENTS_AT_CONCLUSION_OF_EXAMINATION = o.value_text where o.concept_id = @COMMENTS_AT_CONCLUSION_OF_EXAMINATION;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.Part_of_the_day = o.value_text where o.concept_id = @Part_of_the_day;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.CREATININE_CLEARANCE = concept_name(o.value_coded, 'en') where o.concept_id = @CREATININE_CLEARANCE;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.SERUM_SODIUM = o.value_numeric where o.concept_id = @SERUM_SODIUM;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.SERUM_POTASSIUM = o.value_numeric where o.concept_id = @SERUM_POTASSIUM;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.BODY_MASS_INDEX_MEASURED = o.value_numeric where o.concept_id = @BODY_MASS_INDEX_MEASURED;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.OPHTHALMOLOGY_SERVICE = o.value_numeric where o.concept_id = @OPHTHALMOLOGY_SERVICE;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.MORNING_DOSE_IN_MILLIGRAMS = o.value_text where o.concept_id = @MORNING_DOSE_IN_MILLIGRAMS;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.NIGHT_DOSE_IN_MILLIGRAMS = o.value_numeric where o.concept_id = @NIGHT_DOSE_IN_MILLIGRAMS;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.BED_TIME_DOSE_IN_MILLIGRAMS = o.value_numeric where o.concept_id = @BED_TIME_DOSE_IN_MILLIGRAMS;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.Diagnosis_or_problem_non_coded = o.value_numeric where o.concept_id = @Diagnosis_or_problem_non_coded;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.Pain_drugs = o.value_text where o.concept_id = @Pain_drugs;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.other_pain_drugs = concept_name(o.value_coded, 'en') where o.concept_id = @other_pain_drugs;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.NOON_DOSE_IN_MILLIGRAMS = o.value_text where o.concept_id = @NOON_DOSE_IN_MILLIGRAMS;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.OTHER_LAB_TEST_NAME = o.value_numeric where o.concept_id = @OTHER_LAB_TEST_NAME;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.OTHER_LAB_TEST_RESULT = o.value_text where o.concept_id = @OTHER_LAB_TEST_RESULT;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.ABDOMINAL_EXAM_FINDINGS = o.value_text where o.concept_id = @ABDOMINAL_EXAM_FINDINGS;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.CURRENT_COMPLAINTS_OR_SYMPTOMS = concept_name(o.value_coded, 'en') where o.concept_id = @CURRENT_COMPLAINTS_OR_SYMPTOMS;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.Surgical_history = o.value_text where o.concept_id = @Surgical_history;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.MEDICATION_HISTORY = o.value_text where o.concept_id = @MEDICATION_HISTORY;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.ALLERGIC = concept_name(o.value_coded, 'en') where o.concept_id = @ALLERGIC;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.TYPE_OF_REFERRING_CLINIC_OR_HOSPITAL = concept_name(o.value_coded, 'en') where o.concept_id = @TYPE_OF_REFERRING_CLINIC_OR_HOSPITAL;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.NAME_OF_REFERRING_SITE = concept_name(o.value_coded, 'en') where o.concept_id = @NAME_OF_REFERRING_SITE;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.UROGENITAL_EXAM_FINDINGS = o.value_text where o.concept_id = @UROGENITAL_EXAM_FINDINGS;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.Type_of_diabetes_diagnosis = concept_name(o.value_coded, 'en') where o.concept_id = @Type_of_diabetes_diagnosis;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.LUNG_EXAM_FINDINGS = concept_name(o.value_coded, 'en') where o.concept_id = @LUNG_EXAM_FINDINGS;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.RESPIRATORY_RATE = concept_name(o.value_coded, 'en') where o.concept_id = @RESPIRATORY_RATE;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.CHRONIC_CARE_DIAGNOSIS = o.value_numeric where o.concept_id = @CHRONIC_CARE_DIAGNOSIS;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.GENERAL_EXAM_FINDINGS = concept_name(o.value_coded, 'en') where o.concept_id = @GENERAL_EXAM_FINDINGS;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.BLOOD_OXYGEN_SATURATION = concept_name(o.value_coded, 'en') where o.concept_id = @BLOOD_OXYGEN_SATURATION;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.Chest_Thorax_Exam_Findings = o.value_numeric where o.concept_id = @Chest_Thorax_Exam_Findings;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.UBUDEHE_CATEGORY = concept_name(o.value_coded, 'en') where o.concept_id = @UBUDEHE_CATEGORY;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.PATIENTS_FLUID_MANAGEMENT = concept_name(o.value_coded, 'en') where o.concept_id = @PATIENTS_FLUID_MANAGEMENT;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.HEENT_EXAM_FINDINGS = concept_name(o.value_coded, 'en') where o.concept_id = @HEENT_EXAM_FINDINGS;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.CARDIAC_MEDICATION = concept_name(o.value_coded, 'en') where o.concept_id = @CARDIAC_MEDICATION;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.CARDIAC_EXAM_FINDINGS = concept_name(o.value_coded, 'en') where o.concept_id = @CARDIAC_EXAM_FINDINGS;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.NEUROLOGICAL_EXAM_FINDINGS = concept_name(o.value_coded, 'en') where o.concept_id = @NEUROLOGICAL_EXAM_FINDINGS;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.TEMPERATURE_C = concept_name(o.value_coded, 'en') where o.concept_id = @TEMPERATURE_C;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.Clinican_notes = o.value_numeric where o.concept_id = @Clinican_notes;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.Obstestrical = o.value_text where o.concept_id = @Obstestrical;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.HEMATOCRIT = o.value_text where o.concept_id = @HEMATOCRIT;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.ASAT_RESULT = o.value_numeric where o.concept_id = @ASAT_RESULT;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.RESULT_OF_HIV_TEST = o.value_text where o.concept_id = @RESULT_OF_HIV_TEST;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.MONOCYTES = concept_name(o.value_coded, 'en') where o.concept_id = @MONOCYTES;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.TIME_UNITS = o.value_numeric where o.concept_id = @TIME_UNITS;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.Morning_Dose_in_Units = concept_name(o.value_coded, 'en') where o.concept_id = @Morning_Dose_in_Units;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.Diabetes_Medications = o.value_numeric where o.concept_id = @Diabetes_Medications;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.Evening_Dose_in_Units = concept_name(o.value_coded, 'en') where o.concept_id = @Evening_Dose_in_Units;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.Noon_Dose_in_Units = o.value_numeric where o.concept_id = @Noon_Dose_in_Units;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.PLATELETS = o.value_numeric where o.concept_id = @PLATELETS;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.LYMPHOCYTES = o.value_numeric where o.concept_id = @LYMPHOCYTES;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.NEUTROPHILS = o.value_numeric where o.concept_id = @NEUTROPHILS;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.Bedtime_Dose_in_Units = o.value_numeric where o.concept_id = @Bedtime_Dose_in_Units;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.RED_BLOOD_CELLS = o.value_text where o.concept_id = @RED_BLOOD_CELLS;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.WHITE_BLOOD_CELLS = o.value_numeric where o.concept_id = @WHITE_BLOOD_CELLS;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.BLOOD_UREA_NITROGEN = o.value_numeric where o.concept_id = @BLOOD_UREA_NITROGEN;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.ALAT_RESULT = o.value_numeric where o.concept_id = @ALAT_RESULT;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.Patient_Medical_History = o.value_text where o.concept_id = @Patient_Medical_History;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.EOSINOPHILS = concept_name(o.value_coded, 'en') where o.concept_id = @EOSINOPHILS;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.Duration = o.value_numeric where o.concept_id = @Duration;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.HEMOGLOBIN = o.value_numeric where o.concept_id = @HEMOGLOBIN;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.Other = o.value_numeric where o.concept_id = @Other;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.patient_chronic_disease_history = o.value_text where o.concept_id = @patient_chronic_disease_history;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.TELEPHONE_NUMBER = concept_name(o.value_coded, 'en') where o.concept_id = @TELEPHONE_NUMBER;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.Patient_Contact_Phone_Owner = o.value_text where o.concept_id = @Patients_Contact_Phone_Owner;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.Family_Care_giver_Phone_Number = concept_name(o.value_coded, 'en') where o.concept_id = @Family_Care_giver_Phone_Number;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.NAME_OF_HEALTH_CARE_PROVIDER = o.value_text where o.concept_id = @NAME_OF_HEALTH_CARE_PROVIDER;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.PREVIOUS_MEDICAL_HISTORY = o.value_text where o.concept_id = @PREVIOUS_MEDICAL_HISTORY;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.DDB_ECHOCARDIOGRAPH_RESULT = o.value_text where o.concept_id = @DDB_ECHOCARDIOGRAPH_RESULT;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.treatment_appoach = concept_name(o.value_coded, 'en') where o.concept_id = @treatment_appoach;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.Family_Care_giver_name = concept_name(o.value_coded, 'en') where o.concept_id = @Family_Care_giver_name;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.TOTAL_PROTEIN = o.value_text where o.concept_id = @TOTAL_PROTEIN;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.Family_member_suffered_from_Chronic_disease = o.value_numeric where o.concept_id = @Family_member_suffered_from_Chronic_disease;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.Chronic_Respiratory_diseases = concept_name(o.value_coded, 'en') where o.concept_id = @Chronic_Respiratory_diseases;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.Other_Disease_text = concept_name(o.value_coded, 'en') where o.concept_id = @Other_Disease_text;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.ALLERGY_COMMENT = o.value_text where o.concept_id = @ALLERGY_COMMENT;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.Family_Member_Chronic_Diseases = o.value_text where o.concept_id = @Family_Member_Chronic_Diseases;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.ketone = concept_name(o.value_coded, 'en') where o.concept_id = @ketone;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.Other_clinical_diagnosis_non_coded = o.value_numeric where o.concept_id = @Other_clinical_diagnosis_non_coded;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.Hypertension_Stages = o.value_text where o.concept_id = @Hypertension_Stages;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.BASOPHILS = concept_name(o.value_coded, 'en') where o.concept_id = @BASOPHILS;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.X_RAY_CHEST = o.value_numeric where o.concept_id = @X_RAY_CHEST;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.Renal_Failure_Stages = concept_name(o.value_coded, 'en') where o.concept_id = @Renal_Failure_Stages;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.Other_Diabetes_Drug = concept_name(o.value_coded, 'en') where o.concept_id = @Other_Diabetes_Drug;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.ELECTROCARDIOGRAM_DIAGNOSIS = o.value_text where o.concept_id = @ELECTROCARDIOGRAM_DIAGNOSIS;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.other_medical_findings = concept_name(o.value_coded, 'en') where o.concept_id = @other_medical_findings;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.ELECTROCARDIOGRAM_DIAGNOSIS_text = o.value_text where o.concept_id = @ELECTROCARDIOGRAM_DIAGNOSIS_text;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.Asthma_medications = o.value_text where o.concept_id = @Asthma_medications;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.Predicted_Peak_Flow = concept_name(o.value_coded, 'en') where o.concept_id = @Predicted_Peak_Flow;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.Peak_flow_before_salbutamol = o.value_numeric where o.concept_id = @Peak_flow_before_salbutamol;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.Clinical_diagnosis_for_asthma = o.value_numeric where o.concept_id = @Clinical_diagnosis_for_asthma;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.Peak_flow_after_salbutamol = concept_name(o.value_coded, 'en') where o.concept_id = @Peak_flow_after_salbutamol;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.ECHOCARDIOGRAM_COMMENT = o.value_numeric where o.concept_id = @ECHOCARDIOGRAM_COMMENT;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.Home_Based_Care_Practionner_Phone_Number = o.value_text where o.concept_id = @Home_Based_Care_Practionner_Phone_Number;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.OTHER_GENERAL_EXAM_FINDINGS = o.value_text where o.concept_id = @OTHER_GENERAL_EXAM_FINDINGS;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.Scar_Location = o.value_text where o.concept_id = @Scar_Location;
+update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.result_to_other_medical_findings = o.value_text where o.concept_id = @result_to_other_medical_findings;
+
+select * from temp_diabetes_encounters;
