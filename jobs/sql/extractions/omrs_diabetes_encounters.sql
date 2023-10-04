@@ -115,7 +115,6 @@ create temporary table temp_diabetes_encounters (
     Clinical_diagnosis_for_asthma varchar(255),
     Peak_flow_after_salbutamol double,
     ECHOCARDIOGRAM_COMMENT text,
-    Home_Based_Care_Practionner_Phone_Number varchar(255),
     OTHER_GENERAL_EXAM_FINDINGS varchar(255),
     Scar_Location varchar(255),
     result_to_other_medical_findings varchar(255)
@@ -265,9 +264,10 @@ update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.en
 update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.Clinical_diagnosis_for_asthma = concept_name(o.value_coded, 'en') where o.concept_id = @Clinical_diagnosis_for_asthma;
 update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.Peak_flow_after_salbutamol = o.value_numeric where o.concept_id = @Peak_flow_after_salbutamol;
 update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.ECHOCARDIOGRAM_COMMENT = o.value_text where o.concept_id = @ECHOCARDIOGRAM_COMMENT;
-update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.Home_Based_Care_Practionner_Phone_Number = o.value_text where o.concept_id = @Home_Based_Care_Practionner_Phone_Number;
 update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.OTHER_GENERAL_EXAM_FINDINGS = o.value_text where o.concept_id = @OTHER_GENERAL_EXAM_FINDINGS;
 update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.Scar_Location = o.value_text where o.concept_id = @Scar_Location;
 update temp_diabetes_encounters e inner join temp_obs o on e.encounter_id = o.encounter_id set e.result_to_other_medical_findings = o.value_text where o.concept_id = @result_to_other_medical_findings;
+
+update temp_diabetes_encounters   set BODY_MASS_INDEX_MEASURED = IF(HEIGHT_CM && WEIGHT_KG , IF(HEIGHT_CM > 3,ROUND(WEIGHT_KG/(HEIGHT_CM/100*HEIGHT_CM/100),1) ,ROUND(WEIGHT_KG/(HEIGHT_CM*HEIGHT_CM),1)) , null);
 
 select * from temp_diabetes_encounters;
