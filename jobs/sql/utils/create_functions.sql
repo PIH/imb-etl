@@ -23,7 +23,13 @@ CREATE FUNCTION concept_from_mapping(
 BEGIN
     DECLARE mappedConcept INT;
 
-	SELECT concept_id INTO mappedConcept FROM report_mapping WHERE source = _source and code = _code;
+	-- SELECT concept_id INTO mappedConcept FROM report_mapping WHERE source = _source and code = _code;
+    select crm.concept_id INTO mappedConcept
+    from concept_reference_map crm
+        left join concept_reference_term crt on crt.concept_reference_term_id =crm.concept_reference_term_id
+        left join concept_reference_source crs on crs.concept_source_id = crt.concept_source_id
+    where 
+        crs.name=_source and crt.code= _code;
 
     RETURN mappedConcept;
 
