@@ -17,3 +17,4 @@ configuration:
           path: "sql/import-to-table-partition.yml"
         iterations:
           - tableName: "omrs_diabetes_encounters"
+          - tableName: "omrs_hypertension_encounters"

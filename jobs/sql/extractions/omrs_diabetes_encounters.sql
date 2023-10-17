@@ -134,6 +134,8 @@ where f.name in
 		,'NCD Diabetes: Other Investigations','NCD Diabetes: EXAM LABORATORY TEST','NCD Diabetes: Diagnosis and Problems',
 		'NCD DIABETES: Exit from Care Information','NCD Diabetes: Enrollment form'
 	)
+    and enc.voided=0
+    and f.retired=0
 ;
 
 # Populate the "columns" of this table to contain data for each encounter row

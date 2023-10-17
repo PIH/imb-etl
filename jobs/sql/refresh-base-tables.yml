@@ -16,3 +16,4 @@ configuration:
         iterations:
           - tableName: "omrs_diabetes_patients_demographics"
           - tableName: "omrs_diabetes_encounters"
+          - tableName: "omrs_hypertension_encounters"
