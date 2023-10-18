@@ -189,7 +189,12 @@ create table omrs_hypertension_encounters (
     TRIGLYCERIDES float,
     TSH float,
     Scar_Location text,
-    Aminophyilline_dose_in_milligrams float
-
+    Aminophyilline_dose_in_milligrams float,
+    SERUM_POTASSIUM_mEq_per_L float,
+    PEAK_GRADIENT_ACROSS_PULMONIC_VALVE float,
+    upper_chest_Exam_Findings text,
+    Number_or_days float,
+    Other_pulmonary_disease_non_coded text,
+    MITRAL_VALVE_PRESSURE_HALF_TIME float
 
 );
