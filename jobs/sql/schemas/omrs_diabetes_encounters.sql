@@ -2,6 +2,7 @@ create table omrs_diabetes_encounters (
   PATIENT_ID int,
   ENCOUNTER_ID int,
   FORM text,
+  ENCOUNTER_DATE date,
   SERUM_GLUCOSE float,
   SERUM_CREATININE float,
   Glucose_Test text,

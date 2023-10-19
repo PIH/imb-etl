@@ -4,6 +4,7 @@ create temporary table temp_heart_failure_encounters (
     PATIENT_ID int,
     ENCOUNTER_ID int,
     FORM text,
+    ENCOUNTER_DATE date,
     Facility text,
     PULSE float,
     SYSTOLIC_BLOOD_PRESSURE float,
@@ -203,8 +204,8 @@ create temporary table temp_heart_failure_encounters (
 
 # Populate the "rows" of this table to contain all heart failure encounters
 
-insert into temp_heart_failure_encounters (patient_id, encounter_id,form)
-select enc.patient_id, enc.encounter_id,f.name 
+insert into temp_heart_failure_encounters (patient_id, encounter_id,form,ENCOUNTER_DATE)
+select enc.patient_id, enc.encounter_id,f.name,enc.encounter_datetime
 from encounter enc
 inner join form f on f.form_id=enc.form_id
 inner join patient_program pp on pp.patient_id=enc.patient_id

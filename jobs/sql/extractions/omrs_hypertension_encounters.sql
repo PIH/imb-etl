@@ -4,6 +4,7 @@ create temporary table temp_hypertension_encounters (
     PATIENT_ID int,
     ENCOUNTER_ID int,
     FORM text,
+    ENCOUNTER_DATE date,
     DIASTOLIC_BLOOD_PRESSURE float,
     PULSE float,
     SERUM_CREATININE float,
@@ -204,8 +205,8 @@ create temporary table temp_hypertension_encounters (
 
 # Populate the "rows" of this table to contain all hypertension encounters
 
-insert into temp_hypertension_encounters (patient_id, encounter_id,form)
-select enc.patient_id, enc.encounter_id,f.name 
+insert into temp_hypertension_encounters (patient_id, encounter_id,form,ENCOUNTER_DATE)
+select enc.patient_id, enc.encounter_id,f.name,enc.encounter_datetime
 from encounter enc
 inner join form f on f.form_id=enc.form_id
 inner join patient_program pp on pp.patient_id=enc.patient_id

@@ -4,6 +4,7 @@ create temporary table temp_diabetes_encounters (
     PATIENT_ID int,
     ENCOUNTER_ID int,
     FORM text,
+    ENCOUNTER_DATE date,
     SERUM_GLUCOSE double,
     SERUM_CREATININE double,
     Glucose_Test text,
@@ -124,8 +125,8 @@ create temporary table temp_diabetes_encounters (
 
 # Populate the "rows" of this table to contain all diabetes encounters
 
-insert into temp_diabetes_encounters (patient_id, encounter_id,FORM)
-select enc.patient_id, enc.encounter_id,f.name 
+insert into temp_diabetes_encounters (patient_id, encounter_id,FORM,ENCOUNTER_DATE)
+select enc.patient_id, enc.encounter_id,f.name,enc.encounter_datetime
 from encounter enc
 inner join form f on f.form_id=enc.form_id
 where f.name in 

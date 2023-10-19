@@ -2,6 +2,7 @@ create table omrs_heart_failure_encounters (
     PATIENT_ID int,
     ENCOUNTER_ID int,
     FORM text,
+    ENCOUNTER_DATE date,
     Facility text,
     PULSE float,
     SYSTOLIC_BLOOD_PRESSURE float,
