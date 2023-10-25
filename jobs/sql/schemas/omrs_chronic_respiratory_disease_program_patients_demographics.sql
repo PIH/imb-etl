@@ -1,0 +1,20 @@
+CREATE TABLE omrs_chronic_respiratory_disease_program_patients_demographics (
+  patient_id int NOT NULL,
+  Medical_Record_Number varchar(50),
+  Patient_Names varchar(152),
+  Age bigint,
+  Gender varchar(50),
+  country varchar(50),
+  state_province varchar(255),
+  district varchar(255),
+  sector varchar(255),
+  cell varchar(255),
+  umudugudu varchar(255),
+  health_facility varchar(255),
+  Patient_status varchar(5),
+  Enrolment_Date datetime,
+  Completed_Date datetime,
+  Evaluation_status varchar(255),
+  CRD_treatment_status varchar(255),
+  Monitoring_status varchar(255)
+)
