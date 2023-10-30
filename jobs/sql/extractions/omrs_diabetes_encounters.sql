@@ -129,6 +129,7 @@ insert into temp_diabetes_encounters (patient_id, encounter_id,FORM,ENCOUNTER_DA
 select enc.patient_id, enc.encounter_id,f.name,enc.encounter_datetime
 from encounter enc
 inner join form f on f.form_id=enc.form_id
+inner join patient_program pp on pp.patient_id=enc.patient_id
 where f.name in 
 	(
 		'NCD Diabetes: rendez-vous','NCD Diabetes: Medication List','NCD Diabetes: Insulin List'
@@ -137,6 +138,7 @@ where f.name in
 	)
     and enc.voided=0
     and f.retired=0
+    and pp.program_id = @diabetes
 ;
 
 # Populate the "columns" of this table to contain data for each encounter row
