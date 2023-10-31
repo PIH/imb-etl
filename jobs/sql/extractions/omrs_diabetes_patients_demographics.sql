@@ -1,9 +1,30 @@
-<<<<<<< HEAD
-SET GLOBAL sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));
-SELECT 
-=======
+CREATE temporary table temp_diabetes_patients_demographics (
+  patient_id int,
+  Medical_Record_Number varchar(50),
+  Patient_Names varchar(152),
+  Age bigint,
+  Gender varchar(50),
+  country varchar(50),
+  state_province varchar(255),
+  district varchar(255),
+  sector varchar(255),
+  cell varchar(255),
+  umudugudu varchar(255),
+  health_facility varchar(255),
+  Patient_status varchar(5),
+  Enrolment_Date datetime,
+  Completed_Date datetime,
+  Diabetes_treatment_status varchar(255),
+  Monitoring_status varchar(255),
+  Home_glucometer_study varchar(255)  
+);
+
+# Populate the "rows" of this table to contain all diabetes patients 
+insert into temp_diabetes_patients_demographics(patient_id,Medical_Record_Number,Patient_Names,
+    Age,Gender,country,state_province,district,sector,cell,umudugudu,health_facility,
+    Patient_status,Diabetes_treatment_status,Monitoring_status,Home_glucometer_study)
+    
 SELECT
->>>>>>> aa05fb6b60bc8bf0405e186976934f54dcfd9e58
 -- pp.patient_program_id,
 p.patient_id,
 pi.identifier as Medical_Record_Number,
@@ -17,18 +38,6 @@ WHEN ps.dead = 0 THEN 'ALIVE'
 WHEN ps.dead = 1 THEN 'DEAD'
 ELSE 'NULL'
 END AS 'Patient status',
-(SELECT date_enrolled from patient_program ppro
- LEFT JOIN program prog on ppro.program_id = prog.program_id
- where
- patient_id = p.patient_id
-  and prog.name = 'Diabetes Program'
- order by date_enrolled asc limit 1) as 'Enrolment Date',
-(SELECT date_completed from patient_program ppro
- LEFT JOIN program prog on ppro.program_id = prog.program_id
- where
- patient_id = p.patient_id
- and prog.name = 'Diabetes Program'
- order by date_completed limit 1) as 'Completed Date',
 diagnosis1 as 'Diabetes treatment status',
 diagnosis2 as 'Monitoring status',
 diagnosis3 as 'Home glucometer study'
@@ -90,3 +99,52 @@ LEFT JOIN concept_name cn on pws.concept_id = cn.concept_id
 
 WHERE  pr.name="Diabetes Program"
 GROUP BY p.patient_id;
+
+# To optimize performance, first reduce the size of the patient program being queried to those non-voided in these patients
+DROP TEMPORARY TABLE IF EXISTS temp_patient_program;
+create temporary table temp_patient_program
+select patient_program_id,pp.patient_id,program_id,date_enrolled,date_completed,creator,date_created,
+changed_by,date_changed,voided,voided_by,date_voided,uuid,location_id    
+from patient_program pp
+         inner join temp_diabetes_patients_demographics t on pp.patient_id = t.patient_id
+where pp.voided = 0 and pp.program_id= (select program_id from program where name="Diabetes Program")
+;
+
+# Add indexes on these for further query performance
+create index temp_patient_program_oi on temp_patient_program(patient_id);
+create index temp_patient_program_ci1 on temp_patient_program(patient_program_id, program_id);
+
+
+update temp_diabetes_patients_demographics tdpd
+ set 
+    tdpd.Enrolment_Date =
+    (
+        SELECT 
+            date_enrolled 
+        from 
+            patient_program ppro 
+        where
+            ppro.patient_id = tdpd.patient_id 
+            and ppro.program_id=(select program_id from program where name="Diabetes Program")
+        order by ppro.date_enrolled asc limit 1
+    ) 
+ ;
+
+ update temp_diabetes_patients_demographics tdpd
+ set 
+    tdpd.Completed_Date =
+    (
+        SELECT 
+            date_completed 
+        from 
+            patient_program ppro
+        where
+            ppro.patient_id = tdpd.patient_id
+            and ppro.program_id=(select program_id from program where name="Diabetes Program")
+        order by ppro.date_completed limit 1
+    ) 
+ ;
+
+
+
+select * from temp_diabetes_patients_demographics;
