@@ -1,6 +1,8 @@
 create table omrs_hypertension_encounters (
     PATIENT_ID int,
+    PATIENT_UUID text,
     ENCOUNTER_ID int,
+    ENCOUNTER_UUID text,
     FORM text,
     ENCOUNTER_DATE date,
     DIASTOLIC_BLOOD_PRESSURE float,

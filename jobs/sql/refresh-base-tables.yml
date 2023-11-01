@@ -15,16 +15,16 @@ configuration:
           path: "sql/import-to-table-partition.yml"
         iterations:
           - tableName: "omrs_diabetes_patients_demographics"
- #         - tableName: "omrs_diabetes_encounters"
+          - tableName: "omrs_diabetes_encounters"
 #          - tableName: "omrs_hypertension_patients_demographics"
- #         - tableName: "omrs_hypertension_encounters"
+          - tableName: "omrs_hypertension_encounters"
 #          - tableName: "omrs_heart_failure_patients_demographics"
-#          - tableName: "omrs_heart_failure_encounters"
+          - tableName: "omrs_heart_failure_encounters"
 #          - tableName: "omrs_chronic_respiratory_disease_program_patients_demographics"
-#          - tableName: "omrs_asthma_encounters"
+          - tableName: "omrs_asthma_encounters"
 #          - tableName: "omrs_chronic_kidney_disease_patients_demographics"
-#          - tableName: "omrs_CKD_encounters"
-#          - tableName: "omrs_silicosis_encounters"          
+          - tableName: "omrs_CKD_encounters"
+          - tableName: "omrs_silicosis_encounters"          
 
 
 

@@ -1,6 +1,8 @@
 create table omrs_asthma_encounters (
     PATIENT_ID int,
+    PATIENT_UUID text,
     ENCOUNTER_ID int,
+    ENCOUNTER_UUID text,
     FORM text,
     ENCOUNTER_DATE date,
     Provide_asthma_spacer text,

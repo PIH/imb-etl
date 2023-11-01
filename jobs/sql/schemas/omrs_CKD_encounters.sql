@@ -1,6 +1,8 @@
 create table omrs_CKD_encounters (
     PATIENT_ID int,
+    PATIENT_UUID text,
     ENCOUNTER_ID int,
+    ENCOUNTER_UUID text,
     FORM text,
     ENCOUNTER_DATE date,
     Diagnosis_or_problem_non_coded text,

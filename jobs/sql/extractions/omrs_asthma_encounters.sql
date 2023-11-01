@@ -1,7 +1,9 @@
 # First create a temporary table to hold the data to export
 create temporary table temp_asthma_encounters (
     PATIENT_ID int,
+    PATIENT_UUID text,
     ENCOUNTER_ID int,
+    ENCOUNTER_UUID text,
     FORM text,
     ENCOUNTER_DATE date,
     Provide_asthma_spacer text,
@@ -123,9 +125,10 @@ create temporary table temp_asthma_encounters (
 
 # Populate the "rows" of this table to contain all asthma encounters
 
-insert into temp_asthma_encounters (patient_id, encounter_id,FORM,ENCOUNTER_DATE)
-select enc.patient_id, enc.encounter_id,f.name,enc.encounter_datetime
+insert into temp_asthma_encounters (patient_id,patient_uuid , encounter_id,encounter_uuid,FORM,ENCOUNTER_DATE)
+select enc.patient_id,p.uuid, enc.encounter_id,enc.uuid,f.name,enc.encounter_datetime
 from encounter enc
+inner join person p on p.person_id=enc.patient_id
 inner join form f on f.form_id=enc.form_id
 inner join patient_program pp on pp.patient_id=enc.patient_id
 where f.name in 
@@ -135,6 +138,7 @@ where f.name in
 	)
     and enc.voided=0
     and f.retired=0
+    and p.voided=0
 ;
 
 # Populate the "columns" of this table to contain data for each encounter row
