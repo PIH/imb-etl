@@ -1,4 +1,5 @@
 CREATE TABLE omrs_diabetes_patients_demographics (
+  Patient_UUID varchar(50),
   patient_id int,
   Medical_Record_Number varchar(50),
   Patient_Names varchar(152),
@@ -11,10 +12,13 @@ CREATE TABLE omrs_diabetes_patients_demographics (
   cell varchar(255),
   umudugudu varchar(255),
   health_facility varchar(255),
+  phone_number varchar(50),
+  religion varchar(50),
+  profession varchar(50),
   Patient_status varchar(5),
   Enrolment_Date datetime,
   Completed_Date datetime,
   Diabetes_treatment_status varchar(255),
   Monitoring_status varchar(255),
-  Home_glucometer_study varchar(255)  
+  Home_glucometer_study varchar(255)
 );

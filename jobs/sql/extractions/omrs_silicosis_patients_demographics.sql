@@ -1,4 +1,4 @@
-CREATE temporary table temp_heart_failure_patients_demographics (
+CREATE temporary table temp_silicosis_patients_demographics (
   Patient_UUID varchar(50),
   patient_id int,
   Medical_Record_Number varchar(50),
@@ -18,18 +18,19 @@ CREATE temporary table temp_heart_failure_patients_demographics (
   Patient_status varchar(5),
   Enrolment_Date datetime,
   Completed_Date datetime,
-  Treatment_status varchar(255),
   Evaluation_status varchar(255),
-  Surgery_status varchar(255)
+  Monitoring_status varchar(255),
+  Treatment_status varchar(255)
 );
 
-# Populate the "rows" of this table to contain all heart_failure patients
-insert into temp_heart_failure_patients_demographics(Patient_UUID,patient_id,Medical_Record_Number,Patient_Names,
+# Populate the "rows" of this table to contain all silicosis patients
+insert into temp_silicosis_patients_demographics(Patient_UUID,patient_id,Medical_Record_Number,Patient_Names,
     Age,Gender,country,state_province,district,sector,cell,umudugudu,health_facility,
     phone_number,religion,profession,
-    Patient_status,Treatment_status,Evaluation_status,Surgery_status)
+    Patient_status,Evaluation_status,Monitoring_status,Treatment_status)
 
 SELECT
+-- pp.patient_program_id,
 ps.uuid as Patient_UUID,
 p.patient_id,
 pi.identifier as Medical_Record_Number,
@@ -47,9 +48,9 @@ WHEN ps.dead = 0 THEN 'ALIVE'
 WHEN ps.dead = 1 THEN 'DEAD'
 ELSE 'NULL'
 END AS 'Patient status',
-diagnosis1 as 'Treatment status',
-diagnosis2 as 'Evaluation status',
-diagnosis3 as 'Surgery status'
+diagnosis1 as 'Evaluation status',
+diagnosis2 as 'Monitoring status',
+diagnosis3 as 'Treatment  status'
 
 
 from patient p
@@ -86,6 +87,15 @@ and voided=0
 group by person_id
 ) profession on profession.person_id = p.patient_id
 
+JOIN (SELECT patient_id, min(date_enrolled) as first_enrollment, date_completed, patient_program_id , outcome_concept_id
+from patient_program ppro
+inner JOIN program prog on ppro.program_id = prog.program_id
+where prog.name = 'SILICOSIS PROGRAM'
+and ppro.voided=0
+group by patient_id
+) patient_program on patient_program.patient_id=p.patient_id
+
+
 LEFT JOIN (SELECT patient_id, patient_state.start_date, concept_name.name diagnosis1, patient_program.outcome_concept_id
 from patient_program
 LEFT JOIN patient_state on patient_state.patient_program_id=patient_program.patient_program_id
@@ -93,8 +103,8 @@ LEFT JOIN program_workflow_state on program_workflow_state.program_workflow_stat
 LEFT JOIN program_workflow pw on program_workflow_state.program_workflow_id = pw.program_workflow_id
 LEFT JOIN program pro on pw.program_id = pro.program_id
 LEFT JOIN (SELECT * from concept_name where locale="en") concept_name on concept_name.concept_id=program_workflow_state.concept_id
-WHERE pw.concept_id = 1484
-and pro.name = 'HEART FAILURE PROGRAM'
+WHERE pw.concept_id = 6215
+and pro.name = 'SILICOSIS PROGRAM'
 and patient_state.voided=0
 and patient_state.end_date is null
 group by patient_id
@@ -106,8 +116,8 @@ LEFT JOIN program_workflow_state on program_workflow_state.program_workflow_stat
 LEFT JOIN program_workflow pw on program_workflow_state.program_workflow_id = pw.program_workflow_id
 LEFT JOIN program pro on pw.program_id = pro.program_id
 LEFT JOIN (SELECT * from concept_name where locale="en") concept_name on concept_name.concept_id=program_workflow_state.concept_id
-WHERE pw.concept_id = 6215
-and pro.name = 'HEART FAILURE PROGRAM'
+WHERE pw.concept_id = 6751
+and pro.name = 'SILICOSIS PROGRAM'
 and patient_state.voided=0
 and patient_state.end_date is null
 group by patient_id
@@ -119,8 +129,8 @@ LEFT JOIN program_workflow_state on program_workflow_state.program_workflow_stat
 LEFT JOIN program_workflow pw on program_workflow_state.program_workflow_id = pw.program_workflow_id
 LEFT JOIN program pro on pw.program_id = pro.program_id
 LEFT JOIN (SELECT * from concept_name where locale="en") concept_name on concept_name.concept_id=program_workflow_state.concept_id
-WHERE pw.concept_id = 6216
-and pro.name = 'HEART FAILURE PROGRAM'
+WHERE pw.concept_id = 1484
+and pro.name = 'SILICOSIS PROGRAM'
 and patient_state.voided=0
 and patient_state.end_date is null
 group by patient_id
@@ -129,7 +139,9 @@ LEFT JOIN patient_state pState on pp.patient_program_id = pState.patient_program
 LEFT JOIN program_workflow_state pws on pState.state = pws.program_workflow_state_id
 LEFT JOIN concept_name cn on pws.concept_id = cn.concept_id
 
-WHERE  pr.name = 'HEART FAILURE PROGRAM'
+WHERE  pr.name = 'SILICOSIS PROGRAM'
+and pp.voided = 0
+and pr.retired = 0
 GROUP BY p.patient_id;
 
 
@@ -139,8 +151,8 @@ create temporary table temp_patient_program
 select patient_program_id,pp.patient_id,program_id,date_enrolled,date_completed,creator,date_created,
 changed_by,date_changed,voided,voided_by,date_voided,uuid,location_id
 from patient_program pp
-         inner join temp_heart_failure_patients_demographics t on pp.patient_id = t.patient_id
-where pp.voided = 0 and pp.program_id= (select program_id from program where name="HEART FAILURE PROGRAM")
+         inner join temp_silicosis_patients_demographics t on pp.patient_id = t.patient_id
+where pp.voided = 0 and pp.program_id= (select program_id from program where name="SILICOSIS PROGRAM")
 ;
 
 # Add indexes on these for further query performance
@@ -148,7 +160,7 @@ create index temp_patient_program_oi on temp_patient_program(patient_id);
 create index temp_patient_program_ci1 on temp_patient_program(patient_program_id, program_id);
 
 
-update temp_heart_failure_patients_demographics tdpd
+update temp_silicosis_patients_demographics tdpd
  set
     tdpd.Enrolment_Date =
     (
@@ -158,12 +170,12 @@ update temp_heart_failure_patients_demographics tdpd
             patient_program ppro
         where
             ppro.patient_id = tdpd.patient_id
-            and ppro.program_id=(select program_id from program where name="HEART FAILURE PROGRAM")
+            and ppro.program_id=(select program_id from program where name="SILICOSIS PROGRAM")
         order by ppro.date_enrolled asc limit 1
     )
  ;
 
- update temp_heart_failure_patients_demographics tdpd
+ update temp_silicosis_patients_demographics tdpd
  set
     tdpd.Completed_Date =
     (
@@ -173,11 +185,11 @@ update temp_heart_failure_patients_demographics tdpd
             patient_program ppro
         where
             ppro.patient_id = tdpd.patient_id
-            and ppro.program_id=(select program_id from program where name="HEART FAILURE PROGRAM")
+            and ppro.program_id=(select program_id from program where name="SILICOSIS PROGRAM")
         order by ppro.date_completed limit 1
     )
  ;
 
 
 
-select * from temp_heart_failure_patients_demographics;
+select * from temp_silicosis_patients_demographics;

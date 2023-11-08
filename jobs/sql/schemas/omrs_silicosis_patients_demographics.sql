@@ -1,5 +1,5 @@
-CREATE TABLE omrs_chronic_kidney_disease_patients_demographics (
- Patient_UUID varchar(50),
+CREATE TABLE omrs_silicosis_patients_demographics (
+  Patient_UUID varchar(50),
   patient_id int,
   Medical_Record_Number varchar(50),
   Patient_Names varchar(152),
@@ -18,5 +18,7 @@ CREATE TABLE omrs_chronic_kidney_disease_patients_demographics (
   Patient_status varchar(5),
   Enrolment_Date datetime,
   Completed_Date datetime,
+  Evaluation_status varchar(255),
+  Monitoring_status varchar(255),
   Treatment_status varchar(255)
 );
