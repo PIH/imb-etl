@@ -28,6 +28,7 @@ configuration:
           - tableName: "omrs_silicosis_encounters"
           - tableName: "omrs_mental_health_encounters"
           - tableName: "omrs_PDC_encounters"
+          - tableName: "omrs_oncology_encounters"
 
 
 
