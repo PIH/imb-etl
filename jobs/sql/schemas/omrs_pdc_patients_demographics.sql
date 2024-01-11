@@ -1,0 +1,21 @@
+CREATE TABLE omrs_pdc_patients_demographics (
+  Patient_UUID varchar(50),
+  patient_id int,
+  Medical_Record_Number varchar(50),
+  Patient_Names varchar(152),
+  Age bigint,
+  Gender varchar(50),
+  country varchar(50),
+  state_province varchar(255),
+  district varchar(255),
+  sector varchar(255),
+  cell varchar(255),
+  umudugudu varchar(255),
+  health_facility varchar(255),
+  phone_number varchar(50),
+  religion varchar(50),
+  profession varchar(50),
+  Patient_status varchar(5),
+  Enrolment_Date datetime,
+  Completed_Date datetime
+);
