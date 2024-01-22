@@ -30,8 +30,8 @@ configuration:
           - tableName: "omrs_mental_health_encounters"
           - tableName: "omrs_pdc_patients_demographics"
           - tableName: "omrs_PDC_encounters"
+          - tableName: "omrs_oncology_patients_demographics"
           - tableName: "omrs_oncology_encounters"
-
 
 
 
