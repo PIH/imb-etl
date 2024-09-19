@@ -5,3 +5,4 @@ databaseName: ${datasources.openmrs.kirehe.databaseName}
 user: ${datasources.openmrs.kirehe.user}
 password: ${datasources.openmrs.kirehe.password}
 options: ${datasources.openmrs.kirehe.options}
+containerName: ${datasources.openmrs.kirehe.containerName}

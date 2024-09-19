@@ -5,3 +5,4 @@ databaseName: ${datasources.openmrs.butaro.databaseName}
 user: ${datasources.openmrs.butaro.user}
 password: ${datasources.openmrs.butaro.password}
 options: ${datasources.openmrs.butaro.options}
+containerName: ${datasources.openmrs.butaro.containerName}

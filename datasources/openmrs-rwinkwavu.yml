@@ -5,3 +5,4 @@ databaseName: ${datasources.openmrs.rwinkwavu.databaseName}
 user: ${datasources.openmrs.rwinkwavu.user}
 password: ${datasources.openmrs.rwinkwavu.password}
 options: ${datasources.openmrs.rwinkwavu.options}
+containerName: ${datasources.openmrs.rwinkwavu.containerName}
