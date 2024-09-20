@@ -18,3 +18,5 @@ configuration:
             partitionNum: "2"
           - siteName: "butaro"
             partitionNum: "3"
+
+    - path: "sql/refresh-derived-tables.yml"

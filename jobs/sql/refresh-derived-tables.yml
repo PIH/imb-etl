@@ -1,0 +1,11 @@
+type: "job-pipeline"
+description: "Refresh Derived Tables"
+configuration:
+  jobs:
+    - type: "iterating-job"
+      description: "Create derived setup tables"
+      configuration:
+        jobTemplate:
+          path: "sql/create-derived-table-in-warehouse.yml"
+        iterations:
+          - tableName: "dim_date"
