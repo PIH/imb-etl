@@ -8,7 +8,7 @@ configuration:
     - type: "iterating-job"
       description: "Importing from ${siteName} using partition ${partitionNum}"
       configuration:
-        maxConcurrentJobs: 20
+        maxConcurrentJobs: 1
         jobTemplate:
           path: "sql/refresh-base-tables.yml"
         iterations:
